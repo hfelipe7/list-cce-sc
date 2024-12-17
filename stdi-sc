@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
+    <title>Tabla de Datos</title>
+    <style>
+        /* Disable text selection */
+        body {
+            user-select: none;
+            -webkit-user-select: none; /* For Safari */
+            -ms-user-select: none; /* For older IE */
+        }
+
+        /* Disable dragging images */
+        img {
+            pointer-events: none;
+        }
+
+        /* Style for the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50; /* Green background for headers */
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Watermark */
+        .table-container {
+            position: relative;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+        }
+    </style>
+    <script>
+        // Disable right-click context menu
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        });
+
+        // Disable text selection
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable keyboard shortcuts (Ctrl + C, Ctrl + S, Ctrl + U, Print)
+        document.addEventListener("keydown", function(e) {
+            if ((e.ctrlKey || e.metaKey) && 
+                (e.key === 'c' || e.key === 's' || e.key === 'u' || e.key === 'p')) {
+                e.preventDefault();
+                alert('Keyboard shortcuts are disabled to protect this content.');
+            }
+            if (e.key === "PrintScreen" || e.key === "F12") {
+                e.preventDefault();
+                alert('Screenshots and developer tools are disabled.');
+            }
+        });
+
+        // Disable dragging of elements
+        document.addEventListener("dragstart", function(e) {
+            e.preventDefault();
+        });
+
+        // Attempt to block 'Save As' and Print
+        window.onbeforeprint = () => {
+            alert("Printing is disabled for this page.");
+            return false;
+        };
+    </script>
+</head>
+<body>
+    <div class="table-container">
+        <div class="watermark">Confidential</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Territorio</th>
+                    <th>REGION</th>
+                    <th>RECINTO (ZONA)</th>
+                    <th>TIPO</th>
+                    <th>CARGO</th>
+                    <th>NOMBRE Y APELLIDO</th>
+                    <th>COLEGIO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>BAJOS DE HAINA</td><td>00</td><td>00001 - ESCUELA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL BOCIO MARTINEZ</td><td>0027</td></tr>
+                <tr><td>BAJOS DE HAINA</td><td>00</td><td>00030 - ESCUELA PRIMARIA ITABO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SOBEIDA ASENCIO ARIAS</td><td>0039</td></tr>
+                <tr><td>BAJOS DE HAINA</td><td>00</td><td>00017 - ESCUELA DE BARSEQUILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROBERT FRIAS SALLAN</td><td>0090</td></tr>
+                <tr><td>BAJOS DE HAINA</td><td>00</td><td>00001 - ESCUELA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL BOCIO MARTINEZ</td><td>0027</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00030 - ESCUELA PRIMARIA ITABO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SOBEIDA ASENCIO ARIAS</td><td>0039</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00017 - ESCUELA DE BARSEQUILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROBERT FRIAS SALLAN</td><td>0090</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00013 - CENTRO DE ESTUDIO SIBILIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>HENRY WILSON ENCARNACION GUERRERO</td><td>0040</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00011 - COLEGIO CESAR NICOLAS PENSON</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOYBEL YDALISSA MATA ROSARIO</td><td>0020</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANTONIA FRIAS CHAVEZ</td><td>0044</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE DEL CARMEN BAUTISTA</td><td>0043</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00002 - ESCUELA PRIMARIA DEL KM. 17</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANNY SEVERINO VASQUEZ</td><td>0034</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00001 - ESCUELA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARMEN NOVA CEDEÑO</td><td>0027A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00011 - COLEGIO CESAR NICOLAS PENSON</td><td>CCE</td><td>COORDINADOR CCE</td><td>AMAURYS BATISTA RODRIGUEZ</td><td>0020A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00030 - ESCUELA PRIMARIA ITABO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MIGUELINA ANTONIA GERMAN NULL</td><td>0039</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAINERI ANTONIO RAMIREZ REYES</td><td>0043</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00002 - ESCUELA PRIMARIA DEL KM. 17</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARMEN SEVERINO VASQUEZ</td><td>0034</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00001 - ESCUELA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>EUDY VALENTIN GERMAN</td><td>0027B</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00017 - ESCUELA DE BARSEQUILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>PEDRO MARIA PEREZ NULL</td><td>0015</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00013 - CENTRO DE ESTUDIO SIBILIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>VIRGILIO ALEJANDRO DE LEON DE JESUS</td><td>0040A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE EZEQUIEL AQUINO VICTORIANO</td><td>0044</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00043 - ESCUELA SIGLO XXI</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS ALFREDO CORREA PEREZ</td><td>0048</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00001 - ESCUELA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDGAR JOSE BRUJAN VALERA</td><td>0028</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00011 - COLEGIO CESAR NICOLAS PENSON</td><td>CCE</td><td>COORDINADOR CCE</td><td>EVA CAROLINA CUEVAS NULL</td><td>0021</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00030 - ESCUELA PRIMARIA ITABO</td><td>CCE</td><td>COORDINADOR CCE</td><td>PEDRO ASENCIO VICENTE</td><td>0083</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00002 - ESCUELA PRIMARIA DEL KM. 17</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE MIGUEL SEVERINO DE LEON</td><td>0035A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00044 - ESCUELA BASICA HERMANAS MIRABAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ADOLFO GARCIA POCHE</td><td>0124</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00001 - ESCUELA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN LUIS JOSEPH PIÑA</td><td>0029</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00017 - ESCUELA DE BARSEQUILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUANA MENDEZ PEREZ</td><td>0015A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>NORAISY MATOS RUIZ</td><td>0051</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00043 - ESCUELA SIGLO XXI</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL SANTIAGO GERMAN DE LA CRUZ</td><td>0048A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00030 - ESCUELA PRIMARIA ITABO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANA VIRGINIA HERNANDEZ ANDUJAR</td><td>0121</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00011 - COLEGIO CESAR NICOLAS PENSON</td><td>CCE</td><td>COORDINADOR CCE</td><td>MAURICIO MONTERO DE LOS SANTOS</td><td>0021A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00001 - ESCUELA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN CARLOS ABREU DIAZ</td><td>0029A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00011 - COLEGIO CESAR NICOLAS PENSON</td><td>CCE</td><td>COORDINADOR CCE</td><td>MAURICIO MONTERO DE LOS SANTOS</td><td>0021A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00045 - COLEGIO BETEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA BRITO SEVERINO</td><td>0095</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUANA DE LOS SANTOS MALDONADO</td><td>0056</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00013 - CENTRO DE ESTUDIO SIBILIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARTIN CASTILLO REYES</td><td>0045</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00043 - ESCUELA SIGLO XXI</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANILO MORBAN </td><td>0061</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN DE DIOS FLORENTINO FLORENTINO</td><td>0016</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00017 - ESCUELA DE BARSEQUILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DIOSCARY ALTAGRACIA LA PAZ ARIAS</td><td>0015A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00010 - ESCUELA BASICA PROF. MERCEDES PEREZ (NEREIDA)</td><td>CCE</td><td>COORDINADOR CCE</td><td>ULISES BONILLA ALEMAN</td><td>0047</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOENNY PEÑA SANTOS</td><td>0012C</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00011 - COLEGIO CESAR NICOLAS PENSON</td><td>CCE</td><td>COORDINADOR CCE</td><td>FLOR DELANEA GUERRERO NULL</td><td>0022</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00001 - ESCUELA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>CRISTINO EUSEBIO NULL</td><td>0077</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00048 - ESCUELA PRIMARIA  ACTIVO 20-30</td><td>CCE</td><td>COORDINADOR CCE</td><td>WENDY ROSAURA CASTILLO HENRIQUEZ</td><td>0054</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00043 - ESCUELA SIGLO XXI</td><td>CCE</td><td>COORDINADOR CCE</td><td>PETRONILA ARIAS MORBAN</td><td>0094</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>BERNARDO OLIVIER AMPARO</td><td>0017</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00010 - ESCUELA BASICA PROF. MERCEDES PEREZ (NEREIDA)</td><td>CCE</td><td>COORDINADOR CCE</td><td>ETANISLAO MEJIA PEREZ</td><td>0052</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANK JUNIOR GUERRERO MATEO</td><td>0056</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00017 - ESCUELA DE BARSEQUILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JULITZA VALDEZ REYES</td><td>0073</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00011 - COLEGIO CESAR NICOLAS PENSON</td><td>CCE</td><td>COORDINADOR CCE</td><td>INGRI MARGARITA CESPEDES REYNOSO</td><td>0023</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00013 - CENTRO DE ESTUDIO SIBILIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS FELIPE ESPINAL NULL</td><td>0045A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00043 - ESCUELA SIGLO XXI</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE MIGUEL AVELINO PEREZ</td><td>0123</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00048 - ESCUELA PRIMARIA  ACTIVO 20-30</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE LUIS PEÑA FELIZ</td><td>0069</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00010 - ESCUELA BASICA PROF. MERCEDES PEREZ (NEREIDA)</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANKLIN AMAURIS FERRER RODRIGUEZ</td><td>0052A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>EULALIO DIPRE CARELA</td><td>0018</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00017 - ESCUELA DE BARSEQUILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEJANDRO EDUARDO CARMONA GARCIA</td><td>0105</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CEDANIO MONTERO DIAZ</td><td>0058</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00032 - COLEGIO EVANGELICO EBENEZER</td><td>CCE</td><td>COORDINADOR CCE</td><td>JULIO ERNESTO ROJAS LAJARA</td><td>0030</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00011 - COLEGIO CESAR NICOLAS PENSON</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ANTONIO SEVERINO CASTRO</td><td>0023A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00036 - ESCUELA BASICA MATIAS RAMON MELLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>REYES MARTINEZ </td><td>0024A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00013 - CENTRO DE ESTUDIO SIBILIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDDY ALBERTO PIMENTEL VOLQUEZ</td><td>0063</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00039 - ESCUELA BASICA CABON</td><td>CCE</td><td>COORDINADOR CCE</td><td>YENSI DE OLEO MORILLO</td><td>0065</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00013 - CENTRO DE ESTUDIO SIBILIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDDY ALBERTO PIMENTEL VOLQUEZ</td><td>0063</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUZ DEL CARMEN BRUJAN NULL</td><td>0018</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00048 - ESCUELA PRIMARIA  ACTIVO 20-30</td><td>CCE</td><td>COORDINADOR CCE</td><td>JAVIER ALEJANDRO JAQUEZ SANTANA</td><td>0085</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00017 - ESCUELA DE BARSEQUILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANILO CEDEÑO REYES</td><td>0105</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MANAHURIS DE LOS SANTOS MALDONADO</td><td>0103</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDDISON ALEXANDER PILARTE BREA</td><td>0080</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00010 - ESCUELA BASICA PROF. MERCEDES PEREZ (NEREIDA)</td><td>CCE</td><td>COORDINADOR CCE</td><td>JONNY EURY MARIN ABREU</td><td>0055</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00039 - ESCUELA BASICA CABON</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELIXANDRO PIRON PIÑA</td><td>0088</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00017 - ESCUELA DE BARSEQUILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CESAR AUGUSTO MARTINEZ ESCALANTE</td><td>0105</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>FLORENCIO MARTINEZ MOTA</td><td>0019</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00048 - ESCUELA PRIMARIA  ACTIVO 20-30</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL SANO BRETON</td><td>0127</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00036 - ESCUELA BASICA MATIAS RAMON MELLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>NARCISO ACOSTA RUBIO</td><td>0025</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00013 - CENTRO DE ESTUDIO SIBILIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ISMAEL JOSE CAMPUSANO BAUTISTA</td><td>0079</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00032 - COLEGIO EVANGELICO EBENEZER</td><td>CCE</td><td>COORDINADOR CCE</td><td>JESUS REYES LUCIEN</td><td>0030</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICTORIA DEL PILAR VALDEZ PERALTA</td><td>0012</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00039 - ESCUELA BASICA CABON</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR MILCIADEZ RAMIREZ DIAZ</td><td>0110</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JONY DE LEON JAQUEZ</td><td>0031</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00050 - CENTRO DE CAPACITACION MI ESPERANZA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANYIS PAOLA ENCARNACION SILVESTRE</td><td>0129</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ARELYS FELIZ VICENTE</td><td>0019A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00035 - ESCUELA BASICA EL PROGRESO</td><td>CCE</td><td>COORDINADOR CCE</td><td>IDALIA GRULLART NULL</td><td>0011</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00010 - ESCUELA BASICA PROF. MERCEDES PEREZ (NEREIDA)</td><td>CCE</td><td>COORDINADOR CCE</td><td>LIVIO ALBERTO GUERRERO SABINO</td><td>0078</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SILVIO JOSE SORIANO SORIANO</td><td>0012</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00036 - ESCUELA BASICA MATIAS RAMON MELLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARLENY CAMPUSANO NUÑEZ</td><td>0025A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00014 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS EMILIO SANCHEZ NULL</td><td>0024</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00039 - ESCUELA BASICA CABON</td><td>CCE</td><td>COORDINADOR CCE</td><td>ADOLFO GARCIA POCHE</td><td>0071</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MIGUEL ANGEL HEREDIA MINOSA</td><td>0033</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LIVAN ANTONIO SEVERINO FIGUEREO</td><td>0012</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00051 - LICEO NAPOLEON CASILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VALENTIN DE LA CRUZ HENRIQUEZ</td><td>0130</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00010 - ESCUELA BASICA PROF. MERCEDES PEREZ (NEREIDA)</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ISMAEL CORONADO </td><td>0102</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00015 - COLEGIO SAN MARCOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON DOROTEO CABASSA</td><td>0032</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00036 - ESCUELA BASICA MATIAS RAMON MELLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>TEODORO ANTONIO LAVEGAR VENTURA</td><td>0025A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00035 - ESCUELA BASICA EL PROGRESO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS REYES </td><td>0011</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MILAGROS ISOLINA MALDONADO MENDEZ</td><td>0033</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00010 - ESCUELA BASICA PROF. MERCEDES PEREZ (NEREIDA)</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANTONIO ALCANTARA PUJOLS</td><td>0119</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00053 - ESCUELA FRANCISCO DEL ROSARIO SANCHEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE MIGUEL PUELLO PIMENTEL</td><td>0132</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00016 - COLEGIO SAN AGUSTIN</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ANTONIO HERRERA FERNANDEZ</td><td>0032A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JHONATAN RODRIGUEZ DOÑE</td><td>0010C</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00014 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILSON UCETA BAEZ</td><td>0024B</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MIRLENIS YAMILEX MONTES DE OCA DE LEON</td><td>0042</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00036 - ESCUELA BASICA MATIAS RAMON MELLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>GILBERTO HERNANDEZ SANCHEZ</td><td>0038</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00035 - ESCUELA BASICA EL PROGRESO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LINA MORILLO </td><td>0011</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00016 - COLEGIO SAN AGUSTIN</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE VICDALI HERNANDEZ PEREZ</td><td>0032A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00048 - ESCUELA PRIMARIA  ACTIVO 20-30</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANDRES MANUEL FELIZ REYES</td><td>0054A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICTOR BERROA NULL</td><td>0031</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00036 - ESCUELA BASICA MATIAS RAMON MELLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILLY DE LOS SANTOS NIVAR</td><td>0038A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00016 - COLEGIO SAN AGUSTIN</td><td>CCE</td><td>COORDINADOR CCE</td><td>GERVACIO TRINIDAD </td><td>0104</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00035 - ESCUELA BASICA EL PROGRESO</td><td>CCE</td><td>COORDINADOR CCE</td><td>YEIMIRA CARRASCO MORILLO</td><td>0011</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL ANTONIO MADE NULL</td><td>0010B</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>BETSAIDA MERCEDES FELIX CASTILLO</td><td>0010A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL ANTONIO MATOS MATOS</td><td>0037</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00037 - ESCUELA SAN JOSE</td><td>CCE</td><td>COORDINADOR CCE</td><td>JESUS MARIA RAMIREZ EUSEBIO</td><td>0046</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR DE JESUS CAMEJO CARRASCO</td><td>0010B</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUCAS LUIS ROJAS NULL</td><td>0070</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00012 - ESCUELA MAX HENRIQUEZ UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CRISTIAN MOTA </td><td>0037</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00037 - ESCUELA SAN JOSE</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO ALBERTO RIJO SEVERINO</td><td>0046B</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00037 - ESCUELA SAN JOSE</td><td>CCE</td><td>COORDINADOR CCE</td><td>BALBINO PINALES MARIÑEZ</td><td>0046</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANA MERCEDES REYES SEVERINO</td><td>0008</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANYELO YSMAEL LORA TAVERAS</td><td>0012B</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON POZO DE LA CRUZ</td><td>0009A</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00021 - CENTRO DE EXCELENCIA MELBA BAEZ DE ERAZO</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDWARD BREA PEREZ</td><td>0009</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00037 - ESCUELA SAN JOSE</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDWIN JESUS RAMIREZ TEJEDA</td><td>0087</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00040 - ESCUELA PRIMARIA VILLA MARIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIANELA FRIAS CONCEPCION</td><td>0111</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00040 - ESCUELA PRIMARIA VILLA MARIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALFONSO DE LA CRUZ TEJEDA</td><td>0093</td></tr>
+<tr><td>BAJOS DE HAINA</td><td>00</td><td>00040 - ESCUELA PRIMARIA VILLA MARIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELIX JESUS DIAZ CASTRO</td><td>0016</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00014 - ESCUELA BASICA LOS TOROS</td><td>CCE</td><td>COORDINADOR CCE</td><td>YNOCENCIO DE LEON FLORENTINO</td><td>0035</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00014 - ESCUELA BASICA LOS TOROS</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN ANTONIO DEL ROSARIO</td><td>0036</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00016 - ESCUELA BASICA CUMIA ABAJO</td><td>CCE</td><td>COORDINADOR CCE</td><td>OCTAVIO NOVA LORENZO</td><td>0056</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00017 - ESCUELA BASICA SALOME UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>PEDRO JOSE DIPRE DE LEON</td><td>0030</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00017 - ESCUELA BASICA SALOME UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ORNAYSIS LARA DOMINGUEZ</td><td>0017</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00017 - ESCUELA BASICA SALOME UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE HEREDIA HENRIQUEZ</td><td>0032</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00017 - ESCUELA BASICA SALOME UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CESAR EMETERIO LORENZO</td><td>0068</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00017 - ESCUELA BASICA SALOME UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>YASMERLIN VALDEZ LORENZO</td><td>0033</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00017 - ESCUELA BASICA SALOME UREÑA</td><td>CCE</td><td>COORDINADOR CCE</td><td>PEDRO ENCARNACION RENVILL</td><td>0052</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00019 - ESCUELA BASICA LAS GUAMAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>RUBEN GARCIA GARCIA</td><td>0054</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00019 - ESCUELA BASICA LAS GUAMAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON TEJEDA </td><td>0066</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00023 - ESCUELA BASICA PUEBLO NUEVO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE LUIS DIAZ GARCIA</td><td>0055</td></tr>
+<tr><td>CAMBITA EL PUEBLECITO (DM)</td><td>00</td><td>00023 - ESCUELA BASICA PUEBLO NUEVO</td><td>CCE</td><td>COORDINADOR CCE</td><td>PAOLA MACIEL LARA </td><td>0064</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00020 - ESCUELA BASICA LA TOMA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROBERTO LORENZO LORENZO</td><td>0065</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00015 - ESCUELA BASICA MUCHA AGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELIPE RODRIGUEZ ARIAS</td><td>0038</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00012 - ESCUELA BASICA EL CEDRO</td><td>CCE</td><td>COORDINADOR CCE</td><td>TEODORO LORENZO ROMERO</td><td>0039</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00021 - ESCUELA BASICA EL MAJAGUAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>JAVIER FRANCISCO LORENZO NULL</td><td>0029</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00021 - ESCUELA BASICA EL MAJAGUAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS YOEL LORENZO ABAD</td><td>0029</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00020 - ESCUELA BASICA LA TOMA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FERNANDO ROMERO TEJEDA</td><td>0028</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00028 - INSTITUTO POLITECNICO CAMBITA GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO JAVIER SANTOS RODRIGUEZ</td><td>0060</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00031 - LICEO PROFESOR ANTONIO GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>FAUSTO VEGA </td><td>0063</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00031 - LICEO PROFESOR ANTONIO GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>EURY ADNEL SORIANO NULL</td><td>0062</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00001 - ESCUELA BASICA PEDRO DOMINGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL TULIO LINAREZ TEJEDA</td><td>0006</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00028 - INSTITUTO POLITECNICO CAMBITA GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>YOKASTA MAIRENI DIAZ TURBI</td><td>0050</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00028 - INSTITUTO POLITECNICO CAMBITA GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEZAIMY VERAS DE LA ROSA</td><td>0059</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00028 - INSTITUTO POLITECNICO CAMBITA GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>JEREMIAS LORENZO ROSARIO</td><td>0069</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00001 - ESCUELA BASICA PEDRO DOMINGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILLIAM ROMERO ROBLES</td><td>0003</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00027 - ESCUELA PRIMARIA RURAL-PARAJE CAMBELEN</td><td>CCE</td><td>COORDINADOR CCE</td><td>ERASMO MENDOZA PEGUERO</td><td>0343</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00013 - ESCUELA BASICA HUMACHON</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROBERT VALDEZ ROMERO</td><td>0041</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00013 - ESCUELA BASICA HUMACHON</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROBERT VALDEZ ROMERO</td><td>0040</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00001 - ESCUELA BASICA PEDRO DOMINGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILFREDO PEREZ DE LEON</td><td>0005</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00001 - ESCUELA BASICA PEDRO DOMINGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>HENRY DANIEL DOMINGUEZ DE LEON</td><td>0006A</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00028 - INSTITUTO POLITECNICO CAMBITA GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL MARTE MEDRANO</td><td>0051</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00001 - ESCUELA BASICA PEDRO DOMINGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS ELPIDIO DRULLARD FELIZ</td><td>0002</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00001 - ESCUELA BASICA PEDRO DOMINGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>BARBINA TURBI BELTRE</td><td>0004</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00004 - ESCUELA BASICA LOS MANANTIALES</td><td>CCE</td><td>COORDINADOR CCE</td><td>MODESTO JIMENEZ RAMIREZ</td><td>0022</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00018 - ESCUELA BASICA LA COLONIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>GERMAN WILFREDO GARCIA DE LEON</td><td>0026</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00030 - ESCUELA HERMANA MIRABAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>TOMAS ALVAREZ RODRIGUEZ</td><td>0061</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00030 - ESCUELA HERMANA MIRABAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>YUNIOR DE LA ROSA PINALES</td><td>0070</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00005 - ESCUELA BASICA LAS COLES</td><td>CCE</td><td>COORDINADOR CCE</td><td>REGINO MEDINA MARTINEZ</td><td>0025</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00030 - ESCUELA HERMANA MIRABAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA YSABEL LORENZO LORENZO</td><td>0057</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00031 - LICEO PROFESOR ANTONIO GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEXANDER LORENZO </td><td>0067</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00005 - ESCUELA BASICA LAS COLES</td><td>CCE</td><td>COORDINADOR CCE</td><td>MIGUEL FLORENTINO ROSARIO</td><td>0025</td></tr>
+<tr><td>CAMBITA GARABITOS</td><td>00</td><td>00015 - ESCUELA BASICA MUCHA AGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>WIRVIN VALDEZ NULL</td><td>0037</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00003 - ESCUELA BASICA LAS GALLARDAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO ASENCIO HEREDIA</td><td>0014</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00006 - ESCUELA BASICA LOS BRUJANES</td><td>CCE</td><td>COORDINADOR CCE</td><td>BEATA DE LOS SANTOS AQUINO</td><td>0009</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00003 - ESCUELA BASICA LAS GALLARDAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>EUSEBIA HEREDIA NULL</td><td>0044</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00030 - CENTRO EDUCATIVO PROF. PATRIA MARIA PEREYRA</td><td>CCE</td><td>COORDINADOR CCE</td><td>RICARDO MORENO NULL</td><td>0057</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00003 - ESCUELA BASICA LAS GALLARDAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>EMILIANO SIERRA AQUINO</td><td>0015</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00005 - ESCUELA BASICA LA SIERRA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELICIA ENCARNACION CANDELARIO</td><td>0008</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00030 - CENTRO EDUCATIVO PROF. PATRIA MARIA PEREYRA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE BIENVENIDO MATEO DE LA ROSA</td><td>0065</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00003 - ESCUELA BASICA LAS GALLARDAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>DEMETRIO SATURNINO ASENCIO </td><td>0016</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00003 - ESCUELA BASICA LAS GALLARDAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>VANESSA ESTHER AQUINO DE LEON</td><td>0055</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00006 - ESCUELA BASICA LOS BRUJANES</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ALTAGRACIA ROMERO DE LOS SANTOS</td><td>0010</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00005 - ESCUELA BASICA LA SIERRA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VENTURA VALDEZ REYES</td><td>0039</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00003 - ESCUELA BASICA LAS GALLARDAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>MINERVA RAMIREZ NULL</td><td>0016A</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00030 - CENTRO EDUCATIVO PROF. PATRIA MARIA PEREYRA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ENRIQUE ROBERTO GUZMAN BARDEZ</td><td>0066</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00013 - ESCUELA BASICA MACHIN</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARTA YRENE FRANCO SEGURA</td><td>0023</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00030 - CENTRO EDUCATIVO PROF. PATRIA MARIA PEREYRA</td><td>CCE</td><td>COORDINADOR CCE</td><td>HENRY MANUEL GUZMAN VICTORINO</td><td>0057</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00003 - ESCUELA BASICA LAS GALLARDAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANEUDY VALERIO GUZMAN</td><td>0015</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00013 - ESCUELA BASICA MACHIN</td><td>CCE</td><td>COORDINADOR CCE</td><td>NESTOR ROSARIO </td><td>0046</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>01</td><td>00005 - ESCUELA BASICA LA SIERRA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LORENZA BRUJAN ENCARNACION</td><td>0041</td></tr>
+<tr><td>DOÑA ANA (DM)</td><td>00</td><td>00006 - ESCUELA BASICA LOS BRUJANES</td><td>CCE</td><td>COORDINADOR CCE</td><td>GUSTAVO BRUJAN VALDEZ</td><td>0011</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00018 - ESCUELA BASICA EL CAJUILITO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN FRANCISCO MONTERO VIZCAINO</td><td>0060</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00018 - ESCUELA BASICA EL CAJUILITO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JORGE LUIS MONTERO CAMPUSANO</td><td>0106</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00019 - ESCUELA BASICA EL CARRIL</td><td>CCE</td><td>COORDINADOR CCE</td><td>BRENDA ASTACIO ROJAS</td><td>0005</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00019 - ESCUELA BASICA EL CARRIL</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA ISABEL MORENO CAMPUSANO</td><td>0005A</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00019 - ESCUELA BASICA EL CARRIL</td><td>CCE</td><td>COORDINADOR CCE</td><td>PATRIA JAIME MARTINEZ</td><td>0006</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00019 - ESCUELA BASICA EL CARRIL</td><td>CCE</td><td>COORDINADOR CCE</td><td>LENIN VLADIMIR CAMPUSANO PEREZ</td><td>0059</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00019 - ESCUELA BASICA EL CARRIL</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOHANNY DE JESUS JESUS</td><td>0091</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00019 - ESCUELA BASICA EL CARRIL</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARTINA DE LEON PIMENTEL</td><td>0107</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00019 - ESCUELA BASICA EL CARRIL</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO BALBUENA ABREU</td><td>0120</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00023 - ESCUELA BASICA SABANETA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MANUEL JAQUEZ BENITEZ</td><td>0007</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00023 - ESCUELA BASICA SABANETA</td><td>CCE</td><td>COORDINADOR CCE</td><td>GREGORIO DE LOS SANTOS ROSARIO</td><td>0007A</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00023 - ESCUELA BASICA SABANETA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANIELA CAMPUSANO SENA</td><td>0041</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00023 - ESCUELA BASICA SABANETA</td><td>CCE</td><td>COORDINADOR CCE</td><td>NELLY ESTER PEREZ MARRERO DE PLASENCIA</td><td>0041</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00023 - ESCUELA BASICA SABANETA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALTAGRACIA PEREZ MARRERO</td><td>0041A</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00023 - ESCUELA BASICA SABANETA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VANESSA BELLO MARTINEZ</td><td>0041A</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00023 - ESCUELA BASICA SABANETA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA ALTAGRACIA ABREU CABRERA</td><td>0100</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00024 - ESCUELA BASICA LA PARED</td><td>CCE</td><td>COORDINADOR CCE</td><td>YOLANDA GARCIA REYES</td><td>0001</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00024 - ESCUELA BASICA LA PARED</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL ANTONIO MARTE SOLANO</td><td>0001A</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00024 - ESCUELA BASICA LA PARED</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARCELINO BENITEZ CAMPUSANO</td><td>0002</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00024 - ESCUELA BASICA LA PARED</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANEWFRI SORIANO PEREZ</td><td>0002A</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00024 - ESCUELA BASICA LA PARED</td><td>CCE</td><td>COORDINADOR CCE</td><td>CLAUDIA ARLENNY MORENO GARABITOS</td><td>0003</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00024 - ESCUELA BASICA LA PARED</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON PEÑA POZO</td><td>0050</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00024 - ESCUELA BASICA LA PARED</td><td>CCE</td><td>COORDINADOR CCE</td><td>MIGUEL ANGEL PEÑA POZO</td><td>0050A</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00024 - ESCUELA BASICA LA PARED</td><td>CCE</td><td>COORDINADOR CCE</td><td>GERONSO BATISTA VICIOSO</td><td>0075</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00025 - ESCUELA BASICA MONTE ADENTRO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ENRIQUE DE PAULA GUANTE</td><td>0053</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00025 - ESCUELA BASICA MONTE ADENTRO</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON ANTONIO LIBERATA TORRES</td><td>0062</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00026 - ESCUELA BASICA LA FELICIANA</td><td>CCE</td><td>COORDINADOR CCE</td><td>NATIVIDAD ABREU AGUERO</td><td>0004</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00026 - ESCUELA BASICA LA FELICIANA</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR MANUEL GARCIA DE LOS SANTOS</td><td>0092</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00047 - ESCUELA BASICA DE TERESANDON</td><td>CCE</td><td>COORDINADOR CCE</td><td>ISIDRO ROBERT BENITEZ</td><td>0097</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00047 - ESCUELA BASICA DE TERESANDON</td><td>CCE</td><td>COORDINADOR CCE</td><td>LISAURI ESTRELLA CABRAL</td><td>0118</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00026 - ESCUELA BASICA LA FELICIANA</td><td>CCE</td><td>COORDINADOR CCE</td><td>YEISON CAMPUSANO CASANOVAS</td><td>0114</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00046 - COLEGIO CRISTIANO REF. SAN PABLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CLARA BENITEZ GARCIA</td><td>0096</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00046 - COLEGIO CRISTIANO REF. SAN PABLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DALLENIZ FULGENCIO GERMAN</td><td>0112</td></tr>
+<tr><td>EL CARRIL (DM)</td><td>00</td><td>00046 - COLEGIO CRISTIANO REF. SAN PABLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALIDA FATIMA SANTOS BATISTA</td><td>0126</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00042 - ESCUELA BASICA ESTEBANIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEIDY CAROLINA MATEO JAVIER</td><td>0473</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00043 - ESCUELA BASICA CALLA BONITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>YNOCENCIA SANTOS BRITO</td><td>0238</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00043 - ESCUELA BASICA CALLA BONITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FAUSTO MILIANO PAREDES</td><td>0238A</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00043 - ESCUELA BASICA CALLA BONITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>YSAEL MILIANO SANTOS</td><td>0391</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00043 - ESCUELA BASICA CALLA BONITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANYELINA BAEZ VIZCAINO</td><td>0463</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00043 - ESCUELA BASICA CALLA BONITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>NELFIS ANDRES BREA BURGOS</td><td>0463</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00044 - ESCUELA BASICA JOSÉ FRANCISCO PEÑA GOMEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>PEDRO ANTONIO ASENCIO NULL</td><td>0239</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00044 - ESCUELA BASICA JOSÉ FRANCISCO PEÑA GOMEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON ANTONIO MARTINEZ </td><td>0239A</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00044 - ESCUELA BASICA JOSÉ FRANCISCO PEÑA GOMEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS ENRIQUE MATEO CORDERO</td><td>0452</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>HERMOGENES LARA MORBAN</td><td>0108</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DOMINGO SUERO MATEO</td><td>0045</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DIONI ENRIQUE MALDONADO BRITO</td><td>0108A</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SOBEIDA MARTINEZ SOLANO</td><td>0109</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANA BELKIS NIVAR ASENCIO</td><td>0110A</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00046 - CENTRO EDUCATIVO SAN MIGUEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELVA CECILIA SORIANO ASENCIO</td><td>0412</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA ELIZA MARTINEZ DIONICIO</td><td>0320</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00046 - CENTRO EDUCATIVO SAN MIGUEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELVIRA ARIAS DE LA CRUZ</td><td>0107</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN JOSE BREA </td><td>0453</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CRISMARIEN MATEO RODRIGUEZ</td><td>0321</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00046 - CENTRO EDUCATIVO SAN MIGUEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>RITA ELENA MARTE MOTA</td><td>0454</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN CARLOS SANTOS JIMENEZ</td><td>0392</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00046 - CENTRO EDUCATIVO SAN MIGUEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>CEFERINO CAMPUSANO AYBAR</td><td>0107A</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00045 - CENTRO EDUCATIVO HATILLO</td><td>CCE</td><td>COORDINADOR CCE</td><td>NATIVIDAD DIAZ GERMAN</td><td>0264</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00046 - CENTRO EDUCATIVO SAN MIGUEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ROMAN GONZALEZ NULL</td><td>0107A</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00046 - CENTRO EDUCATIVO SAN MIGUEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEIFIX MORBAN HEREDIA</td><td>0359</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00046 - CENTRO EDUCATIVO SAN MIGUEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>CESAR ALEJANDRO VELASQUEZ </td><td>0359</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00044 - ESCUELA BASICA JOSÉ FRANCISCO PEÑA GOMEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR MATEO </td><td>0322</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00047 - ESCUELA BASICA SAN RAFAEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE MIGUEL MARTINEZ YSAAC</td><td>0113</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00047 - ESCUELA BASICA SAN RAFAEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>BENITO YSAAC NULL</td><td>0114</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00071 - ESCUELA BASICA LAS PALMAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANA FRANCHESCA GUZMAN CASTILLO</td><td>0374</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00071 - ESCUELA BASICA LAS PALMAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>YOCAIRA BEATRIZ CANDELARIO CORPORAN</td><td>0475</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00071 - ESCUELA BASICA LAS PALMAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEONARDO RAFAEL BERROA LUCAS</td><td>0090</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00072 - ESCUELA BASICA LOS MAMEYES</td><td>CCE</td><td>COORDINADOR CCE</td><td>RICHARD ALBERTO CONSTANZA GUANTE</td><td>0447</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00072 - ESCUELA BASICA LOS MAMEYES</td><td>CCE</td><td>COORDINADOR CCE</td><td>SALVADOR GOMEZ SABALA</td><td>0237</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00072 - ESCUELA BASICA LOS MAMEYES</td><td>CCE</td><td>COORDINADOR CCE</td><td>MICAELA MONTERO FRIAS</td><td>0346</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00073 - ESCUELA BASICA MATA NARANJO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ZACARIAS GERMAN DE LOS SANTOS</td><td>0091</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00073 - ESCUELA BASICA MATA NARANJO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LIGIA ELENA GERMAN CANDELARIO</td><td>0115</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00073 - ESCUELA BASICA MATA NARANJO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEANDRO ISAAC DE DIOS NULL</td><td>0363</td></tr>
+<tr><td>HATILLO (DM)</td><td>00</td><td>00073 - ESCUELA BASICA MATA NARANJO</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL ANDRES DIAZ GOMEZ</td><td>0476</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FAUSTINO LORENZO MONTERO</td><td>0315</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MERCEDES MILIANO DE LOS SANTOS</td><td>0065A</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARCELINO ESCOBOSO SANCHEZ</td><td>0065A</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MASIEL ESCOBOSO SANCHEZ</td><td>0429</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ALEJANDRO PEREYRA DE LA ROSA</td><td>0062</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEXANDRA ESCOBOSO SANCHEZ</td><td>0474</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00049 - ESCUELA BASICA LOS MONTONES II</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE MANUEL PEREYRA SOLANO</td><td>0393</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00037 - ESCUELA INICIAL Y BASICA SAN FRANCISCO</td><td>CCE</td><td>COORDINADOR CCE</td><td>HENRY ALCANTARA MONTAÑO</td><td>0080</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00037 - ESCUELA INICIAL Y BASICA SAN FRANCISCO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROLANDO ALCANTARA TIBURCIO</td><td>0390</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LISSETTE DURAN JUMA</td><td>0064</td></tr>
+<tr><td>HATO DAMAS (DM)</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LISSETTE DURAN JUMA</td><td>0064</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00024 - LICEO PROFESOR CESAR EVERTZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA JIMENEZ MIESES</td><td>0039</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00023 - ESCUELA EL CAOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELIAS DE JESUS DICENT</td><td>0040</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>NARCISA SUERO PINEDA</td><td>0043A</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00023 - ESCUELA EL CAOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS MIGUEL MARRERO MARTE</td><td>0089</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DOLORES JOSEFINA ABREU </td><td>0044</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00023 - ESCUELA EL CAOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO REYNOSO MARTE</td><td>0041</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00024 - LICEO PROFESOR CESAR EVERTZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO JIMENEZ NIVAR</td><td>0038</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00024 - LICEO PROFESOR CESAR EVERTZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA ROMERO JAIME</td><td>0072</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00003 - ESCUELA BASICA LAS GALLARDAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA ROMERO JAIME</td><td>0072</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00023 - ESCUELA EL CAOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS ANTONIO MARTINEZ NULL</td><td>0073</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00023 - ESCUELA EL CAOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS ANTONIO MARTINEZ NULL</td><td>0073</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00024 - LICEO PROFESOR CESAR EVERTZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO JIMENEZ NIVAR</td><td>0038</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DIOMARI CASTILLO RAMIREZ</td><td>0045A</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00024 - LICEO PROFESOR CESAR EVERTZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA JIMENEZ MIESES</td><td>0039</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELOY SUERO SANCHEZ</td><td>0045</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00023 - ESCUELA EL CAOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS MIGUEL MARRERO MARTE</td><td>0089</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELOY SUERO SANCHEZ</td><td>0045</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DOLORES JOSEFINA ABREU </td><td>0043A</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JAIRO KAIDE PLACENCIO</td><td>0043</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DIOMARI CASTILLO RAMIREZ</td><td>0045A</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS CARLOS SUERO NIVAR</td><td>0042</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FIOR DALIZA REYES REYNOSO</td><td>0069</td></tr>
+<tr><td>LA CUCHILLA (DM)</td><td>00</td><td>00027 - ESCUELA BASICA LA CUCHILLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FIOR DALIZA REYES REYNOSO</td><td>0069</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00003 - ESCUELA BASICA MARINO GARABITOS II</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANIEL SANCHEZ DE LOS SANTOS</td><td>0012</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00003 - ESCUELA BASICA MARINO GARABITOS II</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALBERTO MARTINEZ GARCIA</td><td>0013</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00007 - ESCUELA BASICA ALAJANDRINA RAMIREZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTO EDUVIGEN CASTILLO NULL</td><td>0009</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00007 - ESCUELA BASICA ALAJANDRINA RAMIREZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELIPE BAEZ MENDEZ</td><td>0010</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00007 - ESCUELA BASICA ALAJANDRINA RAMIREZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>JERLIN SALVADOR LARA ANDUJAR</td><td>0011</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00008 - ESCUELA BASICA LOS ARROYITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>CONSTANTINO MARTINEZ NULL</td><td>0008</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00009 - ESCUELA BASICA GUINEO AFUERA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DOMINGO MARTINEZ ROBLES</td><td>0048</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00009 - ESCUELA BASICA GUINEO AFUERA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARCELINO ROBLE MERCEDES</td><td>0049</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00009 - ESCUELA BASICA GUINEO AFUERA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTO OLIVO POZO OLIVO</td><td>0058</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00011 - ESCUELA BASICA JOSE MANUEL DUVERGE</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA YAQUIRA LARA GROSS</td><td>0046</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00025 - ESCUELA LOS NARANJOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>TIRSO MANUEL CASTILLO RODRIGUEZ</td><td>0043</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00026 - ESCUELA BASICA MONTEADA NUEVA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN BAUTISTA DIAZ RODRIGUEZ</td><td>0044</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00032 - OFICINA SECRETARIA DE ESTADO DE AGRICULTURA</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR MARLIN LARA SOTO</td><td>0014</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00033 - LICEO MARINO GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>DIOMEDES DE JESUS VIZCAINO VILLAR</td><td>0001</td></tr>
+<tr><td>LOS CACAOS</td><td>00</td><td>00033 - LICEO MARINO GARABITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>JHOAN MANUEL JIMENEZ AGRAMONTE</td><td>0060</td></tr>
+<tr><td>MEDINA (DM)</td><td>00</td><td>00025 - ESCUELA PRIMARIA GREGORIA DOÑE DE ABAD</td><td>CCE</td><td>COORDINADOR CCE</td><td>EUTAQUIO NIVAR PIÑA</td><td>0046</td></tr>
+<tr><td>MEDINA (DM)</td><td>00</td><td>00026 - ESCUELA REPUBLICA DE LAS BAHAMAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>NERIS FRIAS DE LEON</td><td>0047</td></tr>
+<tr><td>MEDINA (DM)</td><td>00</td><td>00026 - ESCUELA REPUBLICA DE LAS BAHAMAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>DEYRIS RANDOLS RAMIREZ FRIAS</td><td>0049</td></tr>
+<tr><td>MEDINA (DM)</td><td>00</td><td>00026 - ESCUELA REPUBLICA DE LAS BAHAMAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELPIDIO CUEVAS DE JESUS</td><td>0050</td></tr>
+<tr><td>MEDINA (DM)</td><td>00</td><td>00025 - ESCUELA PRIMARIA GREGORIA DOÑE DE ABAD</td><td>CCE</td><td>COORDINADOR CCE</td><td>MAGALIS LEBRON LEBRON</td><td>0058</td></tr>
+<tr><td>MEDINA (DM)</td><td>00</td><td>00025 - ESCUELA PRIMARIA GREGORIA DOÑE DE ABAD</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARTIN NIVAR PIÑA</td><td>0074</td></tr>
+<tr><td>MEDINA (DM)</td><td>00</td><td>00025 - ESCUELA PRIMARIA GREGORIA DOÑE DE ABAD</td><td>CCE</td><td>COORDINADOR CCE</td><td>CAMILO DOÑE BETANCUR</td><td>0094</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00040 - ESCUELA PRIMARIA VILLA MARIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JEIDY FELIZ CASTRO</td><td>0141</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ALEXIS RAMOS MONTAÑO</td><td>0014A</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00022 - ESCUELA BASICA QUITA SUEÑO</td><td>CCE</td><td>COORDINADOR CCE</td><td>BENITO ALEXIS BATISTA</td><td>0013A</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEJANDRO MATEO PEÑA</td><td>0101</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00022 - ESCUELA BASICA QUITA SUEÑO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JAVIER BENITEZ EVANGELISTA</td><td>0013B</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELISEO ANTONIO PAREDES </td><td>0128</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00022 - ESCUELA BASICA QUITA SUEÑO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLIXTA CEPEDA GARCIA</td><td>0049</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>MAICOL MARTINEZ CASTRO</td><td>0115</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00022 - ESCUELA BASICA QUITA SUEÑO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LOYDA MATEO OTAÑO</td><td>0049A</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>VERA MARGARITA SANCHEZ POPA</td><td>0067</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00022 - ESCUELA BASICA QUITA SUEÑO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANIEL DELGADO CAMPUSANO</td><td>0074</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00022 - ESCUELA BASICA QUITA SUEÑO</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDUVIGIS MARIA SANCHEZ CRISOSTOMO</td><td>0108</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00022 - ESCUELA BASICA QUITA SUEÑO</td><td>CCE</td><td>COORDINADOR CCE</td><td>YOSMERY YISMEY LIRIANO COMAS</td><td>0139</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROSAYNA BELTRE ALCANTARA</td><td>0109</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00040 - ESCUELA PRIMARIA VILLA MARIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARTIN OBISPO ABREU DE LOS SANTOS</td><td>0072</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>JONNATHAN REYES DEL ROSARIO</td><td>0064</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>WANDA ALTAGRACIA BAUTISTA LOPEZ</td><td>0084</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00022 - ESCUELA BASICA QUITA SUEÑO</td><td>CCE</td><td>COORDINADOR CCE</td><td>GRISMARY CASTRO CASTRO</td><td>0081</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUCRECIA DE SALA BERROA</td><td>0014B</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00049 - LICEO MARTIN LOPEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ESPERANZA DE LOS SANTOS PIMENTEL</td><td>0014</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00041 - ESCUELA MI ESPERANZA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICTORIA ELISA CASTILLO SANTANA</td><td>0117</td></tr>
+<tr><td>QUITA SUEÑO (DM)</td><td>00</td><td>00041 - ESCUELA MI ESPERANZA</td><td>CCE</td><td>COORDINADOR CCE</td><td>APOLONIO PEGUERO NULL</td><td>0076</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00001 - ESC. PRIMARIA BASICA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS HERMINIO LORA CASTILLO</td><td>0001</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00001 - ESC. PRIMARIA BASICA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELODIA PEREZ TURBI</td><td>0002</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00001 - ESC. PRIMARIA BASICA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>OSVALDO DE LEON GERMAN</td><td>0003</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00001 - ESC. PRIMARIA BASICA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN ANTONIO LIBERATA </td><td>0004</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00001 - ESC. PRIMARIA BASICA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICTOR MANUEL SANTANA PINALES</td><td>0015</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00005 - ESCUELA PRIMARIA RURAL                 PARAJE SABANA PALENQUE</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN AZOR </td><td>0010</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00004 - ESCUELA BASICA JUAN BARON</td><td>CCE</td><td>COORDINADOR CCE</td><td>DOMINGO ANTONIO URIBE </td><td>0006</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00004 - ESCUELA BASICA JUAN BARON</td><td>CCE</td><td>COORDINADOR CCE</td><td>TORIBIO VALERA GONZALEZ</td><td>0007</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00006 - LICEO MELIDA ALTAGRACIA BAEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL ARCENIO WILLIAMS </td><td>0016</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00006 - LICEO MELIDA ALTAGRACIA BAEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>LISSETTE ANYELY BAEZ PEREZ</td><td>0005</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00006 - LICEO MELIDA ALTAGRACIA BAEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUNIOR ANTONIO COLOME LINAREZ</td><td>0022</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00001 - ESC. PRIMARIA BASICA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE MANUEL MEJIA SANCHEZ</td><td>0025</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00004 - ESCUELA BASICA JUAN BARON</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDUARDO PAULINO </td><td>0008</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00005 - ESCUELA PRIMARIA RURAL                 PARAJE SABANA PALENQUE</td><td>CCE</td><td>COORDINADOR CCE</td><td>SERAFIN PAULINO GUANCE</td><td>0011</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00004 - ESCUELA BASICA JUAN BARON</td><td>CCE</td><td>COORDINADOR CCE</td><td>GENESIS GONZALEZ DIAZ</td><td>0009</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00004 - ESCUELA BASICA JUAN BARON</td><td>CCE</td><td>COORDINADOR CCE</td><td>GUILLERMO TAMAREZ GONZALEZ</td><td>0017</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00005 - ESCUELA PRIMARIA RURAL                 PARAJE SABANA PALENQUE</td><td>CCE</td><td>COORDINADOR CCE</td><td>MOISES ENRIQUE PEREZ BAEZ</td><td>0011</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00004 - ESCUELA BASICA JUAN BARON</td><td>CCE</td><td>COORDINADOR CCE</td><td>YUDENY IVELISSE SIERRA RAMIREZ</td><td>0021</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00004 - ESCUELA BASICA JUAN BARON</td><td>CCE</td><td>COORDINADOR CCE</td><td>LAURA FABIANA GARCIA OZUNA</td><td>0024</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00004 - ESCUELA BASICA JUAN BARON</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN MIRCIADES FIGUEREO GONZALEZ</td><td>0023</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00005 - ESCUELA PRIMARIA RURAL                 PARAJE SABANA PALENQUE</td><td>CCE</td><td>COORDINADOR CCE</td><td>ENEMENCIA MATEO </td><td>0013</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00005 - ESCUELA PRIMARIA RURAL                 PARAJE SABANA PALENQUE</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARELIS ANTONIA ESPINOSA GONZALEZ</td><td>0014</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00005 - ESCUELA PRIMARIA RURAL                 PARAJE SABANA PALENQUE</td><td>CCE</td><td>COORDINADOR CCE</td><td>MANUEL PEREZ MORLA</td><td>0019</td></tr>
+<tr><td>SABANA GRANDE DE PALENQUE</td><td>00</td><td>00005 - ESCUELA PRIMARIA RURAL                 PARAJE SABANA PALENQUE</td><td>CCE</td><td>COORDINADOR CCE</td><td>DEIVIS BRITO BAEZ</td><td>0020</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00042 - ESCUELA BASICA ESTEBANIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MODESTA MATEO CASILLA</td><td>0270</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00042 - ESCUELA BASICA ESTEBANIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALBERTO MOLA RODRIGUEZ</td><td>0344</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CUCHO LIDIO MEDINA MEDINA</td><td>0038</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00042 - ESCUELA BASICA ESTEBANIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>BLADIMIR SORIANO DEL ROSARIO</td><td>0410</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00011 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SARAH ELISA JAPA LAUREANO</td><td>0024</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00011 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MAXIMO CORPORAN MONTERO</td><td>0025</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00011 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ARTURO LEONIDA FULGENCIO GUZMAN</td><td>0026</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00011 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MAYRA TEJEDA PINEDA</td><td>0031</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00030 - ESCUELA JOSE M. ALEJANDRO PICHARDO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALBERTO SANCHEZ UPIA</td><td>0269A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00028 - CLUB CASINO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>PRISCILLA MAGNOLIA CABALLERO GALLARDO</td><td>0310</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00011 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ANDRES PORTES TEJEDA</td><td>0031A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00011 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MANUEL ENRIQUE VALOIS SANCHEZ</td><td>0031B</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00028 - CLUB CASINO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGELYN JOSEFINA RODRIGUEZ CEPEDA</td><td>0036</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00016 - ESCUELA PRIMARIA JUAN PABLO PINA</td><td>CCE</td><td>COORDINADOR CCE</td><td>RODOLFO BAUTISTA PEÑALO</td><td>0033</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00011 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON ANTONIO PORTES TEJEDA</td><td>0306</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00011 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ENDY MERCEDES REYES ARIAS</td><td>0308</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00028 - CLUB CASINO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTIAGO SOTO ENCARNACION</td><td>0369</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00028 - CLUB CASINO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANIELA ESTHER DOMINGUEZ DE LEON</td><td>0035</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00084 - INSTITUTO POSTAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>AMAURI FELIZ VALENZUELA</td><td>0259</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00028 - CLUB CASINO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>THELMA VIOLETA CABALLERO GALLARDO</td><td>0035</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00011 - CENTRO SANITARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MELISSA MAIRELI TEJEDA TEJEDA</td><td>0307</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00030 - ESCUELA JOSE M. ALEJANDRO PICHARDO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUZ CRISTINA PUENTE MARTINEZ</td><td>0032</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00016 - ESCUELA PRIMARIA JUAN PABLO PINA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN GABRIEL PEÑALO MARTINEZ</td><td>0033A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00028 - CLUB CASINO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>RENE AUGUSTO NINA HEREDIA</td><td>0036A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00028 - CLUB CASINO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>MERY ONDINA AQUINO GUZMAN</td><td>0035</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO DELFIN PEREZ NULL</td><td>0258A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00016 - ESCUELA PRIMARIA JUAN PABLO PINA</td><td>CCE</td><td>COORDINADOR CCE</td><td>WANDER LUIS CABRERA ALMONTE</td><td>0033B</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS FELIPE FRANCISCO MORBAN</td><td>0258</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00030 - ESCUELA JOSE M. ALEJANDRO PICHARDO</td><td>CCE</td><td>COORDINADOR CCE</td><td>PEDRO GUILAMO CASTILLO</td><td>0269</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00016 - ESCUELA PRIMARIA JUAN PABLO PINA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN ISIDRO LARA LEDESMA</td><td>0034</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00016 - ESCUELA PRIMARIA JUAN PABLO PINA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ESCARLET NOEMI RODRIGUEZ NIVAR</td><td>0034A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>AMBRIORIS FEBRILLET JACINTO</td><td>0249</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LESBIA MARISOL ROSARIO PIMENTEL</td><td>0034A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00030 - ESCUELA JOSE M. ALEJANDRO PICHARDO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS ALEJANDRO BAUTISTA FELIZ</td><td>0302</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00010 - AYUNTAMIENTO MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARCELO GONZALEZ BATISTA</td><td>0030A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SIMON BOLIVAR CEDANO RODRIGUEZ</td><td>0234</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00030 - ESCUELA JOSE M. ALEJANDRO PICHARDO</td><td>CCE</td><td>COORDINADOR CCE</td><td>TRANQUILINO CASTILLO PERIEL</td><td>0303</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00084 - INSTITUTO POSTAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>NAIROBY DOÑE NULL</td><td>0259A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00100 - EDIFICIO EL HUACALITO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANDY ANTONIO TEJEDA MATOS</td><td>0300</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00010 - AYUNTAMIENTO MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>YASKER GUADALUPE SENRA JAVIER</td><td>0030</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00100 - EDIFICIO EL HUACALITO</td><td>CCE</td><td>COORDINADOR CCE</td><td>TEODULO SOLANO ROMERO</td><td>0301</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00018 - ESCUELA BASICA EL CAJUILITO</td><td>CCE</td><td>COORDINADOR CCE</td><td>PABLO VICTOR ALMONTE MONTERO</td><td>0036</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00085 - LOCAL DEL JUDO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MANUEL DOMINGO CARO JAQUEZ</td><td>0028</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00084 - INSTITUTO POSTAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGEL DARIO GONZALEZ PAYANO</td><td>0400</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00025 - ESCUELA PRIMARIA GREGORIA DOÑE DE ABAD</td><td>CCE</td><td>COORDINADOR CCE</td><td>YAJAIRA JIMENEZ NUÑEZ</td><td>0046A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00085 - LOCAL DEL JUDO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANICASIO ARGENTINO MATEO </td><td>0028</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MILCIADES TAVERAS MONTILLA</td><td>0038A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00085 - LOCAL DEL JUDO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEXANDRA EUGENIA ZORRILLA ROSARIO</td><td>0272</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ARLENNE FRANCHESCA ROSARIO HEREDIA</td><td>0309</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00085 - LOCAL DEL JUDO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANIEL ANTONIO MALDONADO CANDELARIO</td><td>0273</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00100 - EDIFICIO EL HUACALITO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANDRES ACOSTA JACKSON</td><td>0027</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS EDUARDO ALVAREZ DE LA ROSA</td><td>0039</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00016 - ESCUELA PRIMARIA JUAN PABLO PINA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROBERT CRUZ ENCARNACION</td><td>0450</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00021 - ESCUELA BASICA MANUEL MARIA VALENCIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>RODOLFO ANGUSTIA FELIZ</td><td>0039A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00016 - ESCUELA PRIMARIA JUAN PABLO PINA</td><td>CCE</td><td>COORDINADOR CCE</td><td>YAHENNY ESCARLET NIVAR MELENCIANO</td><td>0385</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00021 - ESCUELA BASICA ISIDRO RODRIGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>GERARDO RAMIREZ DE LO SANTOS</td><td>0068</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>YNES DE LOS SANTOS MORENO</td><td>0009</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00014 - COLEGIO OFICIALIZADO SAN RAFAEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>LISENIA RINCON RODRIGUEZ</td><td>0014</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE NICANOR WALTERS VALLEJO</td><td>0009A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00014 - COLEGIO OFICIALIZADO SAN RAFAEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILLIAM ALEXANDER MEDRANO FELIZ</td><td>0283</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEIDA CANDIDA MARIEN CELESTE PEGUERO DE LEON</td><td>0010A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>GREGORIO PUELLO </td><td>0022</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00020 - INSTITUTO POLITECNICO LOYOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICTOR RAMON MARIÑEZ DISLA</td><td>0017</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00094 - ESCUELA PRIMARIA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTO DIPRE MONERO</td><td>0416</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>FREDYS MONTERO ALCANTARA</td><td>0027A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00087 - OFICINA DE TRANSITO MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ARELIS BRITO DOMINGUEZ</td><td>0037</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00020 - INSTITUTO POLITECNICO LOYOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ANTONIO SANCHEZ PUJOLS</td><td>0017A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALBERTO VIZCAINO NULL</td><td>0256</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00094 - ESCUELA PRIMARIA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA MERCEDES FRIAS PINEDA</td><td>0461</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00020 - INSTITUTO POLITECNICO LOYOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR ANDUJAR HERRERA</td><td>0286</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTO GARRIDO MATEO</td><td>0256A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00087 - OFICINA DE TRANSITO MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ARCADIO HUMBERTO ROSARIO JAVIER</td><td>0037A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00020 - INSTITUTO POLITECNICO LOYOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELIX MANUEL DE LA ROSA VALDEZ</td><td>0427</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>PEDRO FRUCTUOSO FRANCO</td><td>0257</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00087 - OFICINA DE TRANSITO MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>EMERITO JACINTO ROSARIO</td><td>0040</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00026 - POLIDEPORTIVO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELIGIO CUELLO </td><td>0003</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>GRISELDA PEREZ SANTIAGO</td><td>0022A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELIDA ARIAS PAREDES DE MARTINEZ</td><td>0257A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00026 - POLIDEPORTIVO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ENRIQUE PANIAGUA CUSTODIO</td><td>0003A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICTOR JOEL GUZMAN LUGO</td><td>0287</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00080 - ESCUELA PRIMARIA DOÑA CHUCHA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CELESTE HERASME FERRERAS</td><td>0311</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00087 - OFICINA DE TRANSITO MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELIX ARIAS DE LOS SANTOS</td><td>0041</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00026 - POLIDEPORTIVO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>AGUSTIN GERMAN NULL</td><td>0004</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGEL DE LEON FELIPE</td><td>0228</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00095 - ESCUELA PRIMARIA FERNANDO CABRAL ORTEGA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ENRIQUE GUERRERO ZAPATA</td><td>0371</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00026 - POLIDEPORTIVO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDUARDO ROSARIO ABREU</td><td>0004A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00094 - ESCUELA PRIMARIA JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>IDALMA GUILLERMINA ROSADO TAVERAS</td><td>0370</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROSA LAVIDANIA CASADO MONTES DE OCA</td><td>0228A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ESTEBAN JAVIER DE LA CRUZ</td><td>0023</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00026 - POLIDEPORTIVO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALBERTO GUANTE MALDONADO</td><td>0276</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00095 - ESCUELA PRIMARIA FERNANDO CABRAL ORTEGA</td><td>CCE</td><td>COORDINADOR CCE</td><td>BENITO MONTAS NULL</td><td>0438</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00080 - ESCUELA PRIMARIA DOÑA CHUCHA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE LEANDRO TURBI DIPRE</td><td>0311</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS JULIO DURAN JIMENEZ</td><td>0245</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00026 - POLIDEPORTIVO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA ANTONIA NINA NULL</td><td>0277</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEONEL BAEZ DE LOS SANTOS</td><td>0451</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>HILKANIA ALTAGRACIA PEREZ RODRIGUEZ</td><td>0245A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00087 - OFICINA DE TRANSITO MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANA SOFIA BOYER </td><td>0041A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00095 - ESCUELA PRIMARIA FERNANDO CABRAL ORTEGA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGEL ERNESTO DE OLEO MARTINEZ</td><td>0481</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00026 - POLIDEPORTIVO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>PABLO ENRIQUE TEJEDA DE LA ROSA</td><td>0278</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALTAGRACIA GARCES ARIAS</td><td>0250</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE EDUARDO BRITO SANCHEZ</td><td>0042</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00098 - ASOCIACION DE CONTADORES PUBLICOS AUTORIZADOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>IRENILSA MENENDEZ RAMON</td><td>0379</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00087 - OFICINA DE TRANSITO MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>AMBIORIX RAFAEL RODRIGUEZ NULL</td><td>0040A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00026 - POLIDEPORTIVO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>LORENZA CATANO DE PEREZ</td><td>0278</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELICITA DE LOS SANTOS LUCAS</td><td>0250A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CLEOTILDE CEBALLOS RODRIGUEZ</td><td>0042A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00026 - POLIDEPORTIVO SAN CRISTOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA MARGARITA PEÑA NULL</td><td>0280</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE MIGUEL MADE MERCEDES</td><td>0085</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00006 - CENTRO EDUCATIVO LUIS OSCAR URIBE</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN ANTONIO REYES NULL</td><td>0001</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00096 - ESCUELA BASICA OFELIA MARIA RIVAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN LUIS BAEZ LORENZO</td><td>0372</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00077 - COLEGIO CRISTIANO ALFARERO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS MANUEL BELLO NULL</td><td>0011</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00006 - CENTRO EDUCATIVO LUIS OSCAR URIBE</td><td>CCE</td><td>COORDINADOR CCE</td><td>FREDDY ANTONIO URIBE MOJICA</td><td>0002</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00074 - ESCUELA BASICA SANTA MARIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS ALBERTO BRITO MARTINEZ</td><td>0088</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00077 - COLEGIO CRISTIANO ALFARERO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DIONICIO RODRIGUEZ SOTO</td><td>0011A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>BRAUDILIO JIMENEZ SIERRA</td><td>0043</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00006 - CENTRO EDUCATIVO LUIS OSCAR URIBE</td><td>CCE</td><td>COORDINADOR CCE</td><td>PEDRO DE LA ROSA ABAD</td><td>0005</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICENTE CARVAJAR HEREDIA</td><td>0085A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00077 - COLEGIO CRISTIANO ALFARERO</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCIS EMMANUEL DIAZ DIPRE</td><td>0478</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00006 - CENTRO EDUCATIVO LUIS OSCAR URIBE</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALBERTO GERONIMO POZO ARIAS</td><td>0006</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MANUEL DE JESUS LORENZO BRITO</td><td>0043A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00080 - ESCUELA PRIMARIA DOÑA CHUCHA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO ALBERTO ENCARNACION DIPRE</td><td>0355</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00079 - COMEDOR ECONOMICO DEL ESTADO DOMINICANO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALFONSO MEDINA ACOSTA</td><td>0288</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS GERMAN SANTOS MATEO</td><td>0086</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00006 - CENTRO EDUCATIVO LUIS OSCAR URIBE</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS RAMIREZ GUZMAN</td><td>0349</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEXANDER LIRIANO BRIOSO</td><td>0386</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00080 - ESCUELA PRIMARIA DOÑA CHUCHA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE EDUARDO MOJICA DOÑE</td><td>0368</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00079 - COMEDOR ECONOMICO DEL ESTADO DOMINICANO</td><td>CCE</td><td>COORDINADOR CCE</td><td>EUDY RODRIGUEZ CHALAS</td><td>0289</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00090 - ESCUELA BASICA VILLA FUNDACION</td><td>CCE</td><td>COORDINADOR CCE</td><td>NORIS ALTAGRACIA MARTINEZ DE LA CRUZ</td><td>0422</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00006 - CENTRO EDUCATIVO LUIS OSCAR URIBE</td><td>CCE</td><td>COORDINADOR CCE</td><td>GERMAN DE LA CRUZ MIESES</td><td>0383</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00079 - COMEDOR ECONOMICO DEL ESTADO DOMINICANO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SALVADOR RIVERA FRANCO</td><td>0290</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00058 - CENTRO EDUCATIVO PROYECTO CANASTA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DAMASO MATEO ALCANTARA</td><td>0211</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00018 - ESCUELA PARROQUIAL SANTA RITA</td><td>CCE</td><td>COORDINADOR CCE</td><td>RONNY CORREA BAUTISTA</td><td>0388</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00006 - CENTRO EDUCATIVO LUIS OSCAR URIBE</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANIEL ENRIQUE FRANCO DIAZ</td><td>0426</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00019 - ESTADIO TEMISTOCLES METZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>BOLIVAR DE JESUS HEREDIA NINA</td><td>0019</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00079 - COMEDOR ECONOMICO DEL ESTADO DOMINICANO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DIHONER SANCHEZ CONTRERAS</td><td>0292</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00014 - COLEGIO OFICIALIZADO SAN RAFAEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>GRISELVA ALTAGRACIA LUGO NULL</td><td>0013</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00019 - ESTADIO TEMISTOCLES METZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>HILARIO DOÑE NULL</td><td>0020</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>GREGORIO ABAD JAVIER</td><td>0271</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00014 - COLEGIO OFICIALIZADO SAN RAFAEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELLERYS ANDRES BENDERT NULL</td><td>0012</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00019 - ESTADIO TEMISTOCLES METZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARINO REYES </td><td>0020A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00079 - COMEDOR ECONOMICO DEL ESTADO DOMINICANO</td><td>CCE</td><td>COORDINADOR CCE</td><td>GERSON AULIO ANDUJAR GUZMAN</td><td>0398</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00058 - CENTRO EDUCATIVO PROYECTO CANASTA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSEFINA VALERIO RAMOS</td><td>0248</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR JULIO GUERRERO LORENZO</td><td>0271A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCIS ANTONIO MATOS GUERRERO</td><td>0231</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00080 - ESCUELA PRIMARIA DOÑA CHUCHA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELIPE DE JESUS BENS DOÑE</td><td>0460</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00019 - ESTADIO TEMISTOCLES METZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEXANDRA COMPRES GARCIA</td><td>0021</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00008 - INSTITUTO PREPARATORIO DE MENORES</td><td>CCE</td><td>COORDINADOR CCE</td><td>EUTACIO VIZCAINO MORETA</td><td>0008A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00079 - COMEDOR ECONOMICO DEL ESTADO DOMINICANO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN CARLOS DE JESUS BAEZ</td><td>0459</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00019 - ESTADIO TEMISTOCLES METZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUANA DE JESUS MARTINEZ COLON</td><td>0246</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00105 - INSTITUTO POLITECNICO FRANCISCO J. PEYNADO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JESUS ALEXIS DIAZ BENJAMIN</td><td>0443</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00058 - CENTRO EDUCATIVO PROYECTO CANASTA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ANTONIO MATEO NULL</td><td>0335</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>HIPOLITO PEREZ NULL</td><td>0428</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00008 - INSTITUTO PREPARATORIO DE MENORES</td><td>CCE</td><td>COORDINADOR CCE</td><td>HILARIO BENS RAMIREZ</td><td>0008B</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00019 - ESTADIO TEMISTOCLES METZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>CATERIN ESTEFANI BAEZ BAEZ</td><td>0246A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON SANCHEZ LORENZO</td><td>0231</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00086 - UNIVERSIDAD EUGENIO MARIA DE HOSTOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ASIA MARIA PEREZ SANTANA</td><td>0235A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>08</td><td>00019 - ESTADIO TEMISTOCLES METZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANDREA CASILLA NULL</td><td>0274</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00058 - CENTRO EDUCATIVO PROYECTO CANASTA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELISANDRO CORDERO SORIANO</td><td>0360</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA VICTORIA PIMENTEL GUERRERO DE FELIZ</td><td>0231</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00008 - INSTITUTO PREPARATORIO DE MENORES</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLITA CHEVALIER MORETA</td><td>0229</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00086 - UNIVERSIDAD EUGENIO MARIA DE HOSTOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>REYES FRANCO DE LOS SANTOS</td><td>0235B</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>DARLIN JOSE CANDELARIO CORPORAN</td><td>0471</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00008 - INSTITUTO PREPARATORIO DE MENORES</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELISEO DE LA ROSA ROA</td><td>0230</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00086 - UNIVERSIDAD EUGENIO MARIA DE HOSTOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDDYS ETANISLAO JIMENEZ MEDINA</td><td>0401</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR BIENVENIDO FELIZ VALDEZ</td><td>0232</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00058 - CENTRO EDUCATIVO PROYECTO CANASTA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS ANTONIO MATEO GUZMAN</td><td>0395</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUSTINA ROSARIO MEDINA</td><td>0271B</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ALTAGRACIA TURBI VIZCAINO</td><td>0236A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00086 - UNIVERSIDAD EUGENIO MARIA DE HOSTOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARMEN MIRIAM DE LA NUEZ DE LA NUEZ</td><td>0235</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>SALVADOR MATEO ALCANTARA</td><td>0233</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00008 - INSTITUTO PREPARATORIO DE MENORES</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON ANTONIO MARTE BAEZ</td><td>0007</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGEL ELEUTERIO MINIER JIMENEZ</td><td>0236B</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CRISTINA FERRER VENTURA</td><td>0318</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00080 - ESCUELA PRIMARIA DOÑA CHUCHA</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDILANIA PINALES LORENZO</td><td>0362</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL CESAR MOJICA MARTINEZ</td><td>0233</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00096 - ESCUELA BASICA OFELIA MARIA RIVAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>FAUSTO JAVIER SANCHEZ ESTEVEZ</td><td>0372</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00096 - ESCUELA BASICA OFELIA MARIA RIVAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>MOISES ROSARIO SOTO</td><td>0417</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00058 - CENTRO EDUCATIVO PROYECTO CANASTA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MICHEL MATEO ALCANTARA</td><td>0431</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARCIA PEREZ SANCHE</td><td>0319</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN RAMON PIÑA VARGAS</td><td>0260</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>SIMON DE LOS SANTOS ROJAS NULL</td><td>0233</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00036 - ESCUELA BASICA SABANA TORO</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILFREDO GUERRERO LORENZO</td><td>0389</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00060 - CENTRO EDUCATIVO NAJAYO ARRIBA</td><td>CCE</td><td>COORDINADOR CCE</td><td>YAMERY FEBRIEL DIPRE</td><td>0164</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00050 - ESCUELA BASICA JOSE MELENDEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANDRES MIESES JIMENEZ</td><td>0179</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00060 - CENTRO EDUCATIVO NAJAYO ARRIBA</td><td>CCE</td><td>COORDINADOR CCE</td><td>YAMERY FEBRIEL DIPRE</td><td>0165</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>DOMINGO ANTONIO ROSARIO PIMENTEL</td><td>0299</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS MANUEL PEREZ RAMIREZ</td><td>0260A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00074 - ESCUELA BASICA SANTA MARIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JESUS MILIANO NULL</td><td>0089</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00050 - ESCUELA BASICA JOSE MELENDEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON EDUARDO CUEVAS VIZCAINO</td><td>0180</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00110 - ESCUELA BASICA LOMA VERDE</td><td>CCE</td><td>COORDINADOR CCE</td><td>REYES VALENTIN DE LOS SANTOS</td><td>0467</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>GABINO POZO </td><td>0261</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>KELVIN RAFAEL MOJICA REYES</td><td>0382</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00050 - ESCUELA BASICA JOSE MELENDEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ERCIDO BAEZ CANARIO</td><td>0181</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00074 - ESCUELA BASICA SANTA MARIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGEL MICHEL BRITO DE LOS SANTOS</td><td>0457</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>WENDELINA ARCINIEGA ENCARNACION</td><td>0425</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00101 - ESCUELA BASICA MARIA TRINIDAD SANCHEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>NARCISO ARIAS NULL</td><td>0484</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00090 - ESCUELA BASICA VILLA FUNDACION</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUNIOR FLORENTINO DE JESUS</td><td>0435</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALFONSO YSABEL FELIZ</td><td>0468</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00050 - ESCUELA BASICA JOSE MELENDEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ESMI GONZALO MIESES FORTUNA</td><td>0455</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00096 - ESCUELA BASICA OFELIA MARIA RIVAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS MANUEL DIPRE LARA</td><td>0439</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00091 - CENTRO EDUCATIVO CLUB ROTARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELITO TEJEDA PINEDA</td><td>0436</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>YULISA JIMENEZ SANTOS</td><td>0424</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00103 - ESCUELA BASICA MATIAS RAMON MELLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>EUCLIDES DE LA CRUZ FIGUEREO</td><td>0420</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>DAVID ELIASEL SEPULVEDA FELIZ</td><td>0479</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00090 - ESCUELA BASICA VILLA FUNDACION</td><td>CCE</td><td>COORDINADOR CCE</td><td>DAURY ALBERTO MERAN QUIROZ</td><td>0480</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00050 - ESCUELA BASICA JOSE MELENDEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>REYMON JOSE CUEVAS REYNOSO</td><td>0413</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00096 - ESCUELA BASICA OFELIA MARIA RIVAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ISIDRO ANTONIO CRUZ NULL</td><td>0482</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00090 - ESCUELA BASICA VILLA FUNDACION</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANTONIO DE JESUS GARCIA DURAN</td><td>0352</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00103 - ESCUELA BASICA MATIAS RAMON MELLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ORFEN JUNIOR CORDERO </td><td>0485</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00050 - ESCUELA BASICA JOSE MELENDEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>CLAUDIO ALBERTO FRANCO PEREZ</td><td>0336</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00050 - ESCUELA BASICA JOSE MELENDEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>CLAUDIO ALBERTO FRANCO PEREZ</td><td>0336</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00101 - ESCUELA BASICA MARIA TRINIDAD SANCHEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>MANUEL EMILIO BAEZ MINYETY</td><td>0418</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00089 - ESC. BASICA MADRE VIEJA SUR</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAIZA CORREA GARCIA</td><td>0354</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00033 - ESCUELA PRIMARIA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>ESTANISLAO CONCEPSION CASTILLO AGUERO</td><td>0081</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00050 - ESCUELA BASICA JOSE MELENDEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>SEBASTIAN PEREZ DEL ROSARIO</td><td>0181A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00092 - CENTRO EDUCATIVO MISION TU PUEDES</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL SUAREZ VERAS</td><td>0437</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>RHADAMES BAEZ ENCARNACION</td><td>0313</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00103 - ESCUELA BASICA MATIAS RAMON MELLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MANUEL DE JESUS CUEVAS ARIAS</td><td>0441</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICTOR MARTE VILLA</td><td>0334</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00051 - CENTRO EDUCATIVO MIRA CIELO</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON LEONALDO MORENO LORA</td><td>0268</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00033 - ESCUELA PRIMARIA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS MARTE CORPORAN</td><td>0082</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00089 - ESC. BASICA MADRE VIEJA SUR</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDUARDO DOMINGUEZ PULA</td><td>0356</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>OLGA LIDIA DECENA MONERO</td><td>0332</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00008 - CENTRO EDUCATIVO ESTEBAN DIAZ MONTERO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROSANNA MARQUEZ GARCIA</td><td>0465</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00091 - CENTRO EDUCATIVO CLUB ROTARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANDRES GUERRERO VALDEZ</td><td>0405</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00090 - ESCUELA BASICA VILLA FUNDACION</td><td>CCE</td><td>COORDINADOR CCE</td><td>RUDDY ALCANTARA NULL</td><td>0361</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00033 - ESCUELA PRIMARIA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>CLARIBEL AGUERO GARCIA</td><td>0082</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>KARILIN ORTIZ PEREZ</td><td>0365</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00051 - CENTRO EDUCATIVO MIRA CIELO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CONCEPCION ADAMS PLACENCIO</td><td>0394</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTO EMILIO VILLAR HEREDIA</td><td>0314</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDDY JULIAN SANTOS ORTIZ</td><td>0333</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00033 - ESCUELA PRIMARIA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>JEMNY MARIA CORPORAN DE LOS SANTOS</td><td>0084</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00091 - CENTRO EDUCATIVO CLUB ROTARIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CLEMENTE MARIÑEZ VIZCAINO</td><td>0366</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00089 - ESC. BASICA MADRE VIEJA SUR</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS DONALD CABRERA FELIZ</td><td>0376</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00090 - ESCUELA BASICA VILLA FUNDACION</td><td>CCE</td><td>COORDINADOR CCE</td><td>CESAR GUZMAN ABAD</td><td>0377</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00033 - ESCUELA PRIMARIA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA EUGENIA CASTILLO CASTILLO</td><td>0084</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00052 - ESCUELA BASICA NIZA ARRIBA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DIEGO RUIZ MORENO</td><td>0182</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00061 - ESCUELA BASICA SANTA LUCIA DE CAMBA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS CORDERO MEJIA</td><td>0414</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00089 - ESC. BASICA MADRE VIEJA SUR</td><td>CCE</td><td>COORDINADOR CCE</td><td>WAGNER STALIN MATOS DE LA ROSA</td><td>0434</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00033 - ESCUELA PRIMARIA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>CRISTIAN ENMANUEL CORPORAN CASTILLO</td><td>0373</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>PAULA ELVIRA HIERRO PEÑA</td><td>0241</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00033 - ESCUELA PRIMARIA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEYVIS VERUSKA CASTILLO CASTILLO</td><td>0406</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00052 - ESCUELA BASICA NIZA ARRIBA</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDGAR MARTINEZ DE JESUS</td><td>0183</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>05</td><td>00061 - ESCUELA BASICA SANTA LUCIA DE CAMBA</td><td>CCE</td><td>COORDINADOR CCE</td><td>QUEHENNIS MARIA ANT. GUZMAN BATISTA DE BENZANT</td><td>0267</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>01</td><td>00090 - ESCUELA BASICA VILLA FUNDACION</td><td>CCE</td><td>COORDINADOR CCE</td><td>CLEIBYS MARIA JIMENEZ CARDENAS</td><td>0404</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDDY MANUEL SEPULVEDA PEREZ</td><td>0375</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00033 - ESCUELA PRIMARIA PADRE BORBON</td><td>CCE</td><td>COORDINADOR CCE</td><td>PATRY ADALGISA MARTE CORPORAN</td><td>0470</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00089 - ESC. BASICA MADRE VIEJA SUR</td><td>CCE</td><td>COORDINADOR CCE</td><td>JESUS MANUEL ANDUJAR PEREZ</td><td>0464</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>ARGENTINA REYES PINALES</td><td>0241A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00106 - ESCUELA BASICA PROF. MILAGROS OZUNA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JULIO CESAR PAREDES BRITO</td><td>0444</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS GUIDO SEGURA NERO</td><td>0241B</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00052 - ESCUELA BASICA NIZA ARRIBA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANDRES ANIBAL FELIPE VIZCAINO</td><td>0184</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00009 - LOCAL DE CONANI</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMIRO CANDELARIO NULL</td><td>0254</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00009 - LOCAL DE CONANI</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUSTO RODRIGUEZ FELIZ</td><td>0254</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00009 - LOCAL DE CONANI</td><td>CCE</td><td>COORDINADOR CCE</td><td>SALVADOR CASILLA MATEO</td><td>0255</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00009 - LOCAL DE CONANI</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROSAURA TIBURCIO LOPEZ</td><td>0255A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00009 - LOCAL DE CONANI</td><td>CCE</td><td>COORDINADOR CCE</td><td>LORENZO RIVERA CORPORAN</td><td>0281</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00009 - LOCAL DE CONANI</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMON BERNARDO GUILLERMO RIVAS</td><td>0282</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00038 - ESCUELA BASICA VILLEGAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL ALEXANDER TEJEDA PUELLO</td><td>0262</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>MANUEL ANTONIO DIAZ PUELLO</td><td>0251</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00038 - ESCUELA BASICA VILLEGAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>HIPOLITA JOHANNA RODRIGUEZ PEGUERO</td><td>0317</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00089 - ESC. BASICA MADRE VIEJA SUR</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEIDA VIRGINIA AGUERO NULL</td><td>0423</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00057 - CENTRO EDUCATIVO CANASTA II</td><td>CCE</td><td>COORDINADOR CCE</td><td>EMILIO OSVALDO CASILLA BENZANT</td><td>0167</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00057 - CENTRO EDUCATIVO CANASTA II</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO ANTONIO GUZMAN NULL</td><td>0167</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00038 - ESCUELA BASICA VILLEGAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILKIN TEJEDA CARREÑO</td><td>0317</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00089 - ESC. BASICA MADRE VIEJA SUR</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDGAR YOEL DOMINGUEZ RAMIREZ</td><td>0403</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ALTAGRACIA MOJICA RAMIREZ</td><td>0251A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00040 - CENTRO EDUCATIVO RAFAELA CORPORAN YOLÍ</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROSANNA MARTE ALCANTARA</td><td>0061</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00057 - CENTRO EDUCATIVO CANASTA II</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANNELISES CASILLA PEREZ</td><td>0169</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS ANTONIO MATOS OTAÑO</td><td>0233</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00040 - CENTRO EDUCATIVO RAFAELA CORPORAN YOLÍ</td><td>CCE</td><td>COORDINADOR CCE</td><td>YSRAEL CONSTANZA ANDUJAR</td><td>0409</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00057 - CENTRO EDUCATIVO CANASTA II</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL ENRIQUE ARIAS CRUZ</td><td>0169</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>PURA VALENTIN SANTOS</td><td>0330</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00059 - ESCUELA BASICA LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CRISTINO PLASENCIO PLASENCIO</td><td>0244</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00099 - ESCUELA PRIMARIA LOS CACAITOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUISANNA CORPORAN ARIAS</td><td>0380</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00068 - ESCUELA BASICA SAINAGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ADOLFO REYNOSO ENCARNACION</td><td>0432</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>DOMINGO ARAUJO RAMIREZ</td><td>0477</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>10</td><td>00016 - ESCUELA BASICA LA VACA</td><td>CCE</td><td>COORDINADOR CCE</td><td>RENE SERGIO RENE</td><td>0050</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR BIENVENIDO DE LEON COLON</td><td>0296</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00068 - ESCUELA BASICA SAINAGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGRY REYNOSO MEDRANO</td><td>0148</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>CLARA EMILIA CEPEDA SANTANA</td><td>0275</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>HELEN EMILIA AGUASVIVAS ZAPATA</td><td>0458</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00106 - ESCUELA BASICA PROF. MILAGROS OZUNA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN DE LA CRUZ MENDOZA FRUCTUOSO</td><td>0462</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>RENE ARIAS BELTRE</td><td>0298</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00068 - ESCUELA BASICA SAINAGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILFREDO BRITO CUEVAS</td><td>0150</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00068 - ESCUELA BASICA SAINAGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DOMINGO ANTONIO BRITO REYNOSO</td><td>0149</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00068 - ESCUELA BASICA SAINAGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDDY ALBERTO BRITO CUELLO</td><td>0152</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>HOMERO MONTERO LEONARDO</td><td>0397</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>09</td><td>00004 - LICEO ENEDINA PUELLO RENVILLE</td><td>CCE</td><td>COORDINADOR CCE</td><td>HILARIO LACHAPELL </td><td>0295</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00068 - ESCUELA BASICA SAINAGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ANDRES CASANOVA CORPORAN</td><td>0364</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>04</td><td>00076 - ESCUELA BASICA CANASTICA KM.2</td><td>CCE</td><td>COORDINADOR CCE</td><td>LENNY NISAURY GUZMAN MORBAN</td><td>0331</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00068 - ESCUELA BASICA SAINAGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS MANUEL RODRIGUEZ JAQUEZ</td><td>0147</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>03</td><td>00068 - ESCUELA BASICA SAINAGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANI DE LA CRUZ REYNOSO</td><td>0151</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00031 - LICEO HERMANAS MIRABAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA DOMINGA BAEZ CASTRO</td><td>0030</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>07</td><td>00016 - ESCUELA PRIMARIA JUAN PABLO PINA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FABRINA JACKELINE RIVERA REYES</td><td>0305</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00075 - ESCUELA BASICA LOS HOYOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARIDAD ESCOBOSO RAMIREZ</td><td>0345</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00034 - CENTRO EDUCATIVO FRANCISCO HENRIQUEZ Y CARVAJAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA MARTINEZ ARAUJO</td><td>0218</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00034 - CENTRO EDUCATIVO FRANCISCO HENRIQUEZ Y CARVAJAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA YASMIN RODRIGUEZ </td><td>0407</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00002 - ESC. PRIM. URB. PROF. PABLO BARINAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS JOSE SAN PABLO DE LOS SANTOS</td><td>0010</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00037 - ESCUELA INICIAL Y BASICA SAN FRANCISCO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUNIOR PIÑA ARAUJO</td><td>0079</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00097 - ESCUELA AMERICO LUGO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGEL BIENVENIDO MARTINEZ PAREDES</td><td>0378</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00020 - INSTITUTO POLITECNICO LOYOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ANTONIO GARCIA NULL</td><td>0018A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00037 - ESCUELA INICIAL Y BASICA SAN FRANCISCO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANDRES HERNANDEZ NULL</td><td>0078</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00020 - INSTITUTO POLITECNICO LOYOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA RAMIREZ NULL</td><td>0017A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00097 - ESCUELA AMERICO LUGO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CRUZ FERNANDO MONTAÑO NULL</td><td>0483</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALFONSO YSABEL FELIZ</td><td>0468</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>RHADAMES BAEZ ENCARNACION</td><td>0313</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTO EMILIO VILLAR HEREDIA</td><td>0314</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS MANUEL PEREZ RAMIREZ</td><td>0260A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>YULISA JIMENEZ SANTOS</td><td>0424</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>AGUSTIN CASTILLO DIAZ</td><td>0449</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00041 - ESCUELA BASICA MALUCO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUANA DE LOS SANTOS PUELLO</td><td>0058</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICENTE RUIZ DE LOS SANTOS</td><td>0064A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>GABINO POZO </td><td>0261</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ALTAGRACIA TURBI VIZCAINO</td><td>0236</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00020 - INSTITUTO POLITECNICO LOYOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEIDA PINALES ABAD</td><td>0285</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00039 - ESCUELA BASICA VICTORIANO CEBALLOS DIAZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMONA GUZMAN CABRERA</td><td>0247</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILQUIN EZEQUIEL BAEZ TEJEDA</td><td>0381</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00001 - CENTRO EDUCATIVO MARCOS CASTAÑER, F.A.</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGEL ELEUTERIO MINIER JIMENEZ</td><td>0236B</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00039 - ESCUELA BASICA VICTORIANO CEBALLOS DIAZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>MIGUEL ANGEL MONERO DE LA ROSA</td><td>0060</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>02</td><td>00041 - ESCUELA BASICA MALUCO</td><td>CCE</td><td>COORDINADOR CCE</td><td>BLADIMIR CORPORAN </td><td>0058</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00048 - ESCUELA BASICA ANGEL MARIA DE LA ROSA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANIELA ALCANTARA CASTILLO</td><td>0065</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00029 - ESCUELA PRIMARIA RURAL CUMIA ARRIBA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ALBERTO NOBERTO LORENZO</td><td>0034</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00035 - ESCUELA BASICA EL RAMON</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN RODRIGUEZ TEJEDA</td><td>0357</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00035 - ESCUELA BASICA EL RAMON</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS MANUEL CORREA NULL</td><td>0219</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00020 - INSTITUTO POLITECNICO LOYOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS NAPOLEON PEREYRA MARIÑEZ</td><td>0016A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00040 - ESCUELA PRIMARIA VILLA MARIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIANELA FRIAS CONCEPCION</td><td>0111</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00041 - ESCUELA BASICA MALUCO</td><td>CCE</td><td>COORDINADOR CCE</td><td>BLADIMIR CORPORAN </td><td>0057</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00014 - COLEGIO OFICIALIZADO SAN RAFAEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>JESUS ELIAS RAMIREZ NULL</td><td>0015A</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>06</td><td>00020 - INSTITUTO POLITECNICO LOYOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JULIO ERNESTO SANCHEZ RODRIGUEZ</td><td>0387</td></tr>
+<tr><td>SAN CRISTOBAL</td><td>00</td><td>00014 - COLEGIO OFICIALIZADO SAN RAFAEL</td><td>CCE</td><td>COORDINADOR CCE</td><td>GRISELVA ALTAGRACIA LUGO NULL</td><td>0015</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00073 - LICEO PROFESOR JUAN BOSCH</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUISA GERMANIA PEGUERO CUEVAS</td><td>0357</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SEVERA GERONIMO NULL</td><td>0361</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00073 - LICEO PROFESOR JUAN BOSCH</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS MANUEL GERONIMO HERNANDEZ</td><td>0358</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00073 - LICEO PROFESOR JUAN BOSCH</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFALOWSKY CESPEDES FAMILIA</td><td>0364</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00073 - LICEO PROFESOR JUAN BOSCH</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFALOWSKY CESPEDES FAMILIA</td><td>0052</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00073 - LICEO PROFESOR JUAN BOSCH</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA GUZMAN GERONIMO</td><td>0357</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00073 - LICEO PROFESOR JUAN BOSCH</td><td>CCE</td><td>COORDINADOR CCE</td><td>SEVERA GERONIMO NULL</td><td>0361</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00073 - LICEO PROFESOR JUAN BOSCH</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS MANUEL GERONIMO HERNANDEZ</td><td>0358</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00073 - LICEO PROFESOR JUAN BOSCH</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUISA GERMANIA PEGUERO CUEVAS</td><td>0358</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00073 - LICEO PROFESOR JUAN BOSCH</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUISA GERMANIA PEGUERO CUEVAS</td><td>0357</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00001 - ESCUELA BASICA CARLOS PINTO</td><td>CCE</td><td>COORDINADOR CCE</td><td>HECTOR LUIS ADVINCOLA AYBAR</td><td>0001</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00063 - ESCUELA PRIMARIA RURAL-LOMA DE LOS FRUCTUOSOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS ALFREDO BERIGUETE NULL</td><td>0221</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00001 - ESCUELA BASICA CARLOS PINTO</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO PEÑA HERNANDEZ</td><td>0207</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00063 - ESCUELA PRIMARIA RURAL-LOMA DE LOS FRUCTUOSOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANKLYN ANTONIO MENDEZ PEREZ</td><td>0353</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00001 - ESCUELA BASICA CARLOS PINTO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA FERRER NULL</td><td>0208</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00064 - ESCUELA PRIMARIA RURAL-PARAJE BOCA DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>PERSEVERANDA MELENCIANO ARIAS</td><td>0153</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00001 - ESCUELA BASICA CARLOS PINTO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA ALFONSA DIPRE DE LA CRUZ</td><td>0360</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00064 - ESCUELA PRIMARIA RURAL-PARAJE BOCA DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FREDDY MANUEL GUILLEN MERENCIANO</td><td>0154</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00027 - ESCUELA PRIMARIA RURAL-PARAJE CAMBELEN</td><td>CCE</td><td>COORDINADOR CCE</td><td>DAHIANA HEREDIA MATEO</td><td>0344</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00064 - ESCUELA PRIMARIA RURAL-PARAJE BOCA DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>EURI MANUEL GUILLEN SANTANA</td><td>0327</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00027 - ESCUELA PRIMARIA RURAL-PARAJE CAMBELEN</td><td>CCE</td><td>COORDINADOR CCE</td><td>VALERIO GERMAN OLIVIER</td><td>0348</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00027 - ESCUELA PRIMARIA RURAL-PARAJE CAMBELEN</td><td>CCE</td><td>COORDINADOR CCE</td><td>KERLYN LUCAS CAMPUSANO</td><td>0356</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00064 - ESCUELA PRIMARIA RURAL-PARAJE BOCA DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FELIPE ANTONIO SUERO PERDOMO</td><td>0346</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00027 - ESCUELA PRIMARIA RURAL-PARAJE CAMBELEN</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCA ASENCIO SUERO</td><td>0266</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00064 - ESCUELA PRIMARIA RURAL-PARAJE BOCA DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEXIS FRUCTUOSO NULL</td><td>0354</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00054 - ESCUELA PRIMARIA RURAL-PARAJE CRUCE DE NAJAYO ABAJO</td><td>CCE</td><td>COORDINADOR CCE</td><td>NICOLAS MADE PAULINO</td><td>0199</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00066 - CENTRO EDUCATIVO PADRE ZEGRI</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCIA JOSEFA MEDINA TEJEDA</td><td>0141</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00054 - ESCUELA PRIMARIA RURAL-PARAJE CRUCE DE NAJAYO ABAJO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTO VALERA ARIAS</td><td>0200</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00054 - ESCUELA PRIMARIA RURAL-PARAJE CRUCE DE NAJAYO ABAJO</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS ESTEBAN DITREN MONTERO</td><td>0349</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00066 - CENTRO EDUCATIVO PADRE ZEGRI</td><td>CCE</td><td>COORDINADOR CCE</td><td>SARAY DEL ROSARIO ROJAS</td><td>0141A</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00066 - CENTRO EDUCATIVO PADRE ZEGRI</td><td>CCE</td><td>COORDINADOR CCE</td><td>00200409522</td><td>0326</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00066 - CENTRO EDUCATIVO PADRE ZEGRI</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALERCIO ANTONIO MILIANO PEREZ</td><td>0345</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALTAGRACIA PINALES CABRERA</td><td>0142</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANGELA MARIA SANTANA AQUINO</td><td>0146</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>YUDY ROSARIO PEREZ</td><td>0143</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARMEN CASILDA DE LOS SANTOS </td><td>0144</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA PAULA JAVIER FIGUEREO</td><td>0145</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SOLEDAD PERDOMO FRANCO</td><td>0324</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO JAVIER SORIANO ZAYAS</td><td>0325</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN ESTARY RAMIREZ DIAZ</td><td>0350</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DIANA CAROLINA SUAREZ NULL</td><td>0352</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00067 - LICEO SECUNDARIO DE NIGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DORCA ECHAVARRIA ROMERO</td><td>0355</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00069 - ESCUELA PRIMARIA RURAL-PARAJE SAMANGOLA</td><td>CCE</td><td>COORDINADOR CCE</td><td>YAHAIRA DE LOS SANTOS MORBAN</td><td>0243</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00070 - ESCUELA PRIMARIA RURAL-PARAJE SAN ANTONIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE ALBERTO CASTRO FRUCTUOSO</td><td>0265</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00070 - ESCUELA PRIMARIA RURAL-PARAJE SAN ANTONIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>BRANDO FRUCTUOSO MARTINEZ</td><td>0323</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00071 - ESCUELA BASICA DE DIOS DIRA</td><td>CCE</td><td>COORDINADOR CCE</td><td>RADHIMIR CUEVAS DE LA CRUZ</td><td>0347</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00072 - ESCUELA PRIMARIA RURAL PARAJE YOGO-YOGO</td><td>CCE</td><td>COORDINADOR CCE</td><td>XAVIER RODRIGUEZ NULL</td><td>0351</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00074 - ESCUELA BASICA JULIAN JIMENEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>LAURA GERMAN CUEVAS</td><td>0362</td></tr>
+<tr><td>SAN GREGORIO DE NIGUA</td><td>00</td><td>00075 - ESCUELA BASICA SAN NICOLAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEUDY PEÑA </td><td>0363</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00023 - ESCUELA EL CAOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO REYNOSO MARTE</td><td>0041</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00023 - ESCUELA EL CAOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO REYNOSO MARTE</td><td>0041</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00023 - ESCUELA EL CAOBAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO REYNOSO MARTE</td><td>0041</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00034 - ESCUELA PRIM. ETILIANO SUSANA</td><td>CCE</td><td>COORDINADOR CCE</td><td>COLASINA GUERRERO MEJIA</td><td>0105</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00015 - ESCUELA PRIMARIA BASICA LAS 10 CASITAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>MERQUIADES MELENCIANO ABREU</td><td>0025</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00015 - ESCUELA PRIMARIA BASICA LAS 10 CASITAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>AMIN ABEL BIDO PEREZ</td><td>0065</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00034 - ESCUELA PRIM. ETILIANO SUSANA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JHORDY RENE GONZALEZ RODRIGUEZ</td><td>0119</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00021 - ESCUELA BASICA ISIDRO RODRIGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>GERARDO RAMIREZ DE LO SANTOS</td><td>0068</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN MIRCIADES PIMENTEL PEÑA</td><td>0056A</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00035 - ESCUELA BASICA VILLA NUEVA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN GUERRERO INOA</td><td>0092</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00035 - ESCUELA BASICA VILLA NUEVA</td><td>CCE</td><td>COORDINADOR CCE</td><td>EULOGIO CABRAL ROSARIO</td><td>0100</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00001 - AYUNTAMIENTO MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANILDA ACEVEDO PAULA</td><td>0008</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>EMELINDA MIESES PLACENCIO</td><td>0067</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00015 - ESCUELA PRIMARIA BASICA LAS 10 CASITAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO VALVERDE ESCOBOSA</td><td>0085</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00035 - ESCUELA BASICA VILLA NUEVA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SORAIDA LARA ACEVEDO</td><td>0120</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00015 - ESCUELA PRIMARIA BASICA LAS 10 CASITAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALTAGRACIA CASILLA </td><td>0101</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00035 - ESCUELA BASICA VILLA NUEVA</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUCIA NIVAR JESUS</td><td>0120</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>YRIS CASTILLO DE LOS SANTOS</td><td>0067A</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00043 - POLITECNICO NUESTRA SEÑORA DE LA ALTAGRACIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA PANIAGUA CASTILLO</td><td>0121</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>CEDRY GEDEON RODRIGUEZ ARIAS</td><td>0102</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00053 - ESCUELA FRANCISCO DEL ROSARIO SANCHEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAFAEL JABIER RAMIREZ</td><td>0029</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00042 - ESCUELA PRIMARIA LIDIA CELESTE REYNOSO</td><td>CCE</td><td>COORDINADOR CCE</td><td>EVELIN CALDERON ALVAREZ</td><td>0075</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00020 - ESCUELA BASICA LORENZO PEREZ POCHE</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA CAMILISE NULL</td><td>0034</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00042 - ESCUELA PRIMARIA LIDIA CELESTE REYNOSO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA DEL CARMEN REYES RAMIREZ</td><td>0103</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>CONFESOR DEL ROSARIO </td><td>0017</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>EUGENIO FRIAS FLORENTINO</td><td>0030</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00020 - ESCUELA BASICA LORENZO PEREZ POCHE</td><td>CCE</td><td>COORDINADOR CCE</td><td>SAMUEL CHACON MARTINEZ</td><td>0076</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00020 - ESCUELA BASICA LORENZO PEREZ POCHE</td><td>CCE</td><td>COORDINADOR CCE</td><td>MICHAEL ALBERTO MICHEL MARTE</td><td>0116</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>MIGUELINA MARGARITA BIDO SANCHEZ</td><td>0030A</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00044 - ESCUELA PRIMARIA ERCILIA PEPIN</td><td>CCE</td><td>COORDINADOR CCE</td><td>ESMIRNA ABIGAIL TIBREY HERNANDEZ</td><td>0110</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00021 - ESCUELA BASICA ISIDRO RODRIGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>GABRIEL DE LA NIEVE LORENZO</td><td>0033</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00044 - ESCUELA PRIMARIA ERCILIA PEPIN</td><td>CCE</td><td>COORDINADOR CCE</td><td>JAHAZIEL TIBREY HERNANDEZ</td><td>0122</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00021 - ESCUELA BASICA ISIDRO RODRIGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>YOMAIRY FLORENTINO CHACON</td><td>0036</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUSTILIANO SUAREZ NULL</td><td>0031</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00021 - ESCUELA BASICA ISIDRO RODRIGUEZ</td><td>CCE</td><td>COORDINADOR CCE</td><td>DEMETRIO DE LOS SANTOS ALCANTARA</td><td>0037</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00045 - SECRETARIA DE LA MUJER</td><td>CCE</td><td>COORDINADOR CCE</td><td>GABINO MARTINEZ SANCHEZ</td><td>0095</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>BERNARDO EVANGELISTA POLONIO DE JESUS</td><td>0031A</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00046 - OFICINA DE ADUANAS ZONA FRANCA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JESUS MANUEL MONTILLA PEÑA</td><td>0027</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00022 - CENTRO EDUCATIVO JUAN PABLO DUARTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICTORIANO DAVID NULL</td><td>0056</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00047 - EDIFICIO DEL CEA</td><td>CCE</td><td>COORDINADOR CCE</td><td>GLADIS MERCEDES ALMONTE COLLADO</td><td>0066</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00048 - ESCUELA JUAN DE MOTA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VICTOR RAFAEL SUAREZ CORPORAN</td><td>0123</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00031 - LICEO MANUEL PATIN MACEO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SEGUNDA POLANCO POLANCO</td><td>0051</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00020 - ESCUELA BASICA LORENZO PEREZ POCHE</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOHANNA NAVARRO REYNOSO</td><td>0088</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00048 - ESCUELA JUAN DE MOTA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JERLIS MANUEL MARRERO JAYME</td><td>0097</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00031 - LICEO MANUEL PATIN MACEO</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN MANUEL ARIAS LORENZO</td><td>0051</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00048 - ESCUELA JUAN DE MOTA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUANA MARIA ASCENCIO LAPAIX</td><td>0106</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00031 - LICEO MANUEL PATIN MACEO</td><td>CCE</td><td>COORDINADOR CCE</td><td>WILMA BIRMANIA DURAN REYNOSO</td><td>0077</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00052 - CLUB MUNICIPAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>YSABEL CANDELARIO GARCIA</td><td>0016</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00003 - COLEGIO AVEMARIA (ANT. GOLEGIO PIAGET)</td><td>CCE</td><td>COORDINADOR CCE</td><td>ADELAIDA LORENZO SANTOS</td><td>0013</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00031 - LICEO MANUEL PATIN MACEO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLAS ESTHER SANCHEZ NUÑEZ</td><td>0071</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00003 - COLEGIO AVEMARIA (ANT. GOLEGIO PIAGET)</td><td>CCE</td><td>COORDINADOR CCE</td><td>JULIA ANTONIA PAULA LORENZO</td><td>0013A</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00058 - ESCUELA PRIMARIA HERMANAS MIRABAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>FABIO ROMERO RODRIGUEZ</td><td>0035</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00007 - ESC. PRIM. JAVIER ANGULO GURIDI</td><td>CCE</td><td>COORDINADOR CCE</td><td>BASILIA FRIAS DE LEON</td><td>0004</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00031 - LICEO MANUEL PATIN MACEO</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIAN EDILY PAULINO JIMENEZ</td><td>0077</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00007 - ESC. PRIM. JAVIER ANGULO GURIDI</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTIAGO CARMONA DEL ROSARIO</td><td>0005</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00007 - ESC. PRIM. JAVIER ANGULO GURIDI</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARINO MARTINEZ LORENZO</td><td>0009</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00031 - LICEO MANUEL PATIN MACEO</td><td>CCE</td><td>COORDINADOR CCE</td><td>YEIMY YESSENIA GUERRERO FIGUEROA</td><td>0078</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00007 - ESC. PRIM. JAVIER ANGULO GURIDI</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARMEN ROSA SOTO FLORES</td><td>0010</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00031 - LICEO MANUEL PATIN MACEO</td><td>CCE</td><td>COORDINADOR CCE</td><td>SALOMON DE LOS SANTOS GUZMAN</td><td>0080A</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00007 - ESC. PRIM. JAVIER ANGULO GURIDI</td><td>CCE</td><td>COORDINADOR CCE</td><td>NESTORA EMILIANO DE JESUS</td><td>0011</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00007 - ESC. PRIM. JAVIER ANGULO GURIDI</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAMONA CORPORAN DE JESUS</td><td>0052</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00007 - ESC. PRIM. JAVIER ANGULO GURIDI</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANTONIO VALLEJO SEPULVEDA</td><td>0059</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00007 - ESC. PRIM. JAVIER ANGULO GURIDI</td><td>CCE</td><td>COORDINADOR CCE</td><td>LUIS MANUEL MIESES FLORES</td><td>0115</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00032 - FUNDACION CAAMAÑO CONTRA LA MISERIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>KARINA INES JAVIER EMILIANO</td><td>0003</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00008 - PALACIO DE JUSTICIA DE VILLA ALTAGRACIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>HAMLET ALEXANDER GUANTE GARCIA</td><td>0015</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00008 - PALACIO DE JUSTICIA DE VILLA ALTAGRACIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>AGUSTIN CASTILLO DE LA CRUZ</td><td>0015A</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00034 - ESCUELA PRIM. ETILIANO SUSANA</td><td>CCE</td><td>COORDINADOR CCE</td><td>AGUSTINA SOLANO ACENCIO DE ACEVEDO</td><td>0091</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00008 - PALACIO DE JUSTICIA DE VILLA ALTAGRACIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELIZABETH TRINIDAD GUERRERO</td><td>0062</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00015 - ESCUELA PRIMARIA BASICA LAS 10 CASITAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARTIRES GERMAN POZO</td><td>0024</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00034 - ESCUELA PRIM. ETILIANO SUSANA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ERCILIA MIGUELINA REYNOSO ALCANTARA</td><td>0093</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00034 - ESCUELA PRIM. ETILIANO SUSANA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN GABRIEL BERAS ACEVEDO</td><td>0099</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00037 - FEDERACION DE JUNTAS DE VECINOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOANNA GUARQUIRIA GARCIA REYNOSO</td><td>0002</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00037 - FEDERACION DE JUNTAS DE VECINOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>ALEXANDER SEVERINO ACEVEDO</td><td>0002A</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00041 - ESCUELA BASICA DE LA COLINA 4</td><td>CCE</td><td>COORDINADOR CCE</td><td>HIPOLITO ANTONIO MERCEDES NULL</td><td>0107</td></tr>
+<tr><td>VILLA ALTAGRACIA</td><td>00</td><td>00043 - POLITECNICO NUESTRA SEÑORA DE LA ALTAGRACIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SUGEIDY OSORIA SANO</td><td>0109</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00014 - ESCUELA BASICA DUVEAUX</td><td>CCE</td><td>COORDINADOR CCE</td><td>PABLO RODRIGUEZ GARCIA</td><td>0026</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00014 - ESCUELA BASICA DUVEAUX</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANIELA ROJAS CABRERA</td><td>0049</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00001 - ESCUELA BASICA FRAY BARTOLOME DE LAS CASAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>MIGUELINA MORENO GUZMAN</td><td>0062</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00001 - ESCUELA BASICA FRAY BARTOLOME DE LAS CASAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA LUISA CABRERA SIERRA</td><td>0002A</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00014 - ESCUELA BASICA DUVEAUX</td><td>CCE</td><td>COORDINADOR CCE</td><td>HENRY VALLEJO JIMENEZ</td><td>0071</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00015 - ESCUELA BASICA INGENIO CAEI</td><td>CCE</td><td>COORDINADOR CCE</td><td>YONIS QUENEDIS VALDEZ YSABEL</td><td>0020</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00017 - ESCUELA BASICA LA CABRIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ADA ALBERTO RODRIGUEZ PEREZ</td><td>0047</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00022 - POLITECNICO ANA LILIANS MIRANDA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DELIS ALEXANDRA FLORENTINO PINEDA</td><td>0063</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00001 - ESCUELA BASICA FRAY BARTOLOME DE LAS CASAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>EDUIN ABER ORTIZ DE LOS SANTOS</td><td>0003</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00015 - ESCUELA BASICA INGENIO CAEI</td><td>CCE</td><td>COORDINADOR CCE</td><td>CESAR AUGUSTO PEREZ RAMIREZ</td><td>0021</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00022 - POLITECNICO ANA LILIANS MIRANDA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUNIOR SANTANA GUZMAN</td><td>0073</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00020 - ESCUELA BASICA LA CABIRMA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VALERIA CORDERO PEREZ</td><td>0047</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00016 - ESCUELA BASICA LA VACA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELIO PINALES MORENO</td><td>0028</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00002 - ESCUELA BASICA RAMONA ANTONIA CABRERA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN FRANCISCO YSABEL MARIÑEZ</td><td>0034</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00022 - POLITECNICO ANA LILIANS MIRANDA</td><td>CCE</td><td>COORDINADOR CCE</td><td>FABIO JOSE CARVAJAL DE LA CRUZ</td><td>0001</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00023 - ESCUELA BASICA LA JAGUA</td><td>CCE</td><td>COORDINADOR CCE</td><td>VERENICE REYNOSO DE LOS SANTOS</td><td>0051</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00004 - ESCUELA BASICA LA CUEVA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ELIZABETH FRANCO ALCANTARA</td><td>0029</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00022 - POLITECNICO ANA LILIANS MIRANDA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SARA AYBAR GUZMAN</td><td>0001A</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00016 - ESCUELA BASICA LA VACA</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARMEN MARIA ANTIGUA VAZQUEZ</td><td>0050</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00025 - ESCUELA BASICA PAJARITO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROSANNA ELIZABETH FRANCO PLASENCIO</td><td>0022</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00022 - POLITECNICO ANA LILIANS MIRANDA</td><td>CCE</td><td>COORDINADOR CCE</td><td>MIGUEL ANGEL ROSARIO MEJIA</td><td>0054</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00025 - ESCUELA BASICA PAJARITO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROSALBELLA ANTIGUA NULL</td><td>0048</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00004 - ESCUELA BASICA LA CUEVA</td><td>CCE</td><td>COORDINADOR CCE</td><td>ISIDRA RAMIREZ CASILLA</td><td>0029</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00022 - POLITECNICO ANA LILIANS MIRANDA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JULIO CESAR SANCHEZ RODRIGUEZ</td><td>0060</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00025 - ESCUELA BASICA PAJARITO</td><td>CCE</td><td>COORDINADOR CCE</td><td>ANDREINA GUZMAN RAMIREZ</td><td>0052</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00017 - ESCUELA BASICA LA CABRIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA HEREDIA NULL</td><td>0035</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00017 - ESCUELA BASICA LA CABRIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JOSE PLASENCIO VALERA</td><td>0058</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00021 - ESCUELA BASICA NAJAYO AL MEDIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>HENRRY CORDERO NULL</td><td>0021</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00019 - ESCUELA BASICA LOS VALLEJOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>GERARDO MARTINEZ MINIER</td><td>0027</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00021 - ESCUELA BASICA NAJAYO AL MEDIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARMEN LAURA LORENZO FAVIAN</td><td>0072</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00019 - ESCUELA BASICA LOS VALLEJOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>RAIMUNDO GONZALEZ GUZMAN</td><td>0036</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00028 - ESCUELA PRIMARIA EL CORTE</td><td>CCE</td><td>COORDINADOR CCE</td><td>FRANCISCO MARIÑEZ CASTRO</td><td>0007</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00019 - ESCUELA BASICA LOS VALLEJOS</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARIA ALTAGRACIA RIVERA VELAZQUEZ</td><td>0045</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00007 - ESCUELA BASICA LAS MERCEDES</td><td>CCE</td><td>COORDINADOR CCE</td><td>MAXIMO AQUINO MEDINA</td><td>0012</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00001 - ESCUELA BASICA FRAY BARTOLOME DE LAS CASAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARLOS UCEBIO DIPRE CARMONA</td><td>0037</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00011 - ESCUELA BASICA BOCA DE MANA</td><td>CCE</td><td>COORDINADOR CCE</td><td>DANIEL CABRERA VALDEZ</td><td>0006</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00029 - ESCUELA BASICA EL LIMON</td><td>CCE</td><td>COORDINADOR CCE</td><td>CARMEN PINEDA NULL</td><td>0061</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00021 - ESCUELA BASICA NAJAYO AL MEDIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>RUBEN PEREZ DIPRE</td><td>0040</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00007 - ESCUELA BASICA LAS MERCEDES</td><td>CCE</td><td>COORDINADOR CCE</td><td>GEORGE MORENO GUZMAN</td><td>0013</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00001 - ESCUELA BASICA FRAY BARTOLOME DE LAS CASAS</td><td>CCE</td><td>COORDINADOR CCE</td><td>JULIAN DOÑE HERRERA</td><td>0002</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00014 - ESCUELA BASICA DUVEAUX</td><td>CCE</td><td>COORDINADOR CCE</td><td>MARCIAL BREA SIERRA</td><td>0025</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00012 - ESCUELA BASICA MANA DE YAGUATE</td><td>CCE</td><td>COORDINADOR CCE</td><td>EPIFANIO BAUTISTA CARVAJAL</td><td>0004</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00007 - ESCUELA BASICA LAS MERCEDES</td><td>CCE</td><td>COORDINADOR CCE</td><td>PEDRO CHANER VALDEZ RODRIGUEZ</td><td>0042</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00012 - ESCUELA BASICA MANA DE YAGUATE</td><td>CCE</td><td>COORDINADOR CCE</td><td>CASILDA BAUTISTA CARVAJAL</td><td>0031</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00017 - ESCUELA BASICA LA CABRIA</td><td>CCE</td><td>COORDINADOR CCE</td><td>SANTA HEREDIA NULL</td><td>0017</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00007 - ESCUELA BASICA LAS MERCEDES</td><td>CCE</td><td>COORDINADOR CCE</td><td>WIRSON TURBI NULL</td><td>0068</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00007 - ESCUELA BASICA LAS MERCEDES</td><td>CCE</td><td>COORDINADOR CCE</td><td>ROSARIO JIMENEZ VIZCAINO</td><td>0030</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00031 - LICEO HERMANAS MIRABAL</td><td>CCE</td><td>COORDINADOR CCE</td><td>JHUNEUDYS RODRIGUEZ DE LA ROSA</td><td>0056</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00021 - ESCUELA BASICA NAJAYO AL MEDIO</td><td>CCE</td><td>COORDINADOR CCE</td><td>REYNALDO VALENZUELA SIERRA</td><td>0018</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00002 - ESCUELA BASICA RAMONA ANTONIA CABRERA</td><td>CCE</td><td>COORDINADOR CCE</td><td>JUAN MATEO FELIX</td><td>0043</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00024 - ESCUELA BASICA LOS LEONES</td><td>CCE</td><td>COORDINADOR CCE</td><td>YOJANSEL PEREZ DIPRE</td><td>0053</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00024 - ESCUELA BASICA LOS LEONES</td><td>CCE</td><td>COORDINADOR CCE</td><td>LEANDRO PAREDES GUZMAN</td><td>0019</td></tr>
+<tr><td>YAGUATE</td><td>00</td><td>00012 - ESCUELA BASICA MANA DE YAGUATE</td><td>CCE</td><td>COORDINADOR CCE</td><td>ISAAC DE LA ROSA PEREZ</td><td>0004</td></tr>
+                <!-- More rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
